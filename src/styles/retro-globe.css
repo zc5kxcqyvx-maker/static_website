@@ -27,7 +27,7 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 21px; /* Scaled up ~30% from 16px */
 }
 
 body {
@@ -258,12 +258,12 @@ body {
 .globe-container {
     position: fixed;
     top: 50%;
-    left: calc(50% - 150px);
+    left: calc(50% - 80px);
     transform: translate(-50%, -50%);
-    width: 110vw;
-    height: 110vw;
-    max-width: 1500px;
-    max-height: 1500px;
+    width: 100vw;
+    height: 100vw;
+    max-width: 1400px;
+    max-height: 1400px;
     z-index: 1;
     pointer-events: none;
     opacity: 0.6;
@@ -300,7 +300,7 @@ body {
     position: fixed;
     top: 5vh;
     right: 3vw;
-    width: 520px;
+    width: 650px;
     max-width: 90vw;
     height: 90vh;
     background: rgba(5, 5, 5, 0.95);
@@ -488,7 +488,7 @@ body {
     position: fixed;
     top: 5vh;
     left: 3vw;
-    width: 420px;
+    width: 500px;
     max-width: 40vw;
     height: 90vh;
     background: rgba(5, 5, 5, 0.97);
@@ -1480,7 +1480,11 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    z-index: 100;
+    z-index: 500;
+    background: rgba(5, 5, 5, 0.85);
+    padding: 1rem 0.75rem;
+    border: 1px solid var(--green-dark);
+    border-radius: 4px;
 }
 
 .progress-track {
@@ -1525,10 +1529,22 @@ body {
    RESPONSIVE
    ===================================================== */
 
+@media (max-width: 1400px) {
+    .content-panel {
+        width: 550px;
+        right: 25px;
+    }
+
+    .detail-panel {
+        width: 400px;
+        max-width: 38vw;
+    }
+}
+
 @media (max-width: 1200px) {
     .content-panel {
-        width: 460px;
-        right: 35px;
+        width: 500px;
+        right: 20px;
     }
 
     .detail-panel {

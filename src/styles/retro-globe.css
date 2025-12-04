@@ -493,16 +493,18 @@ body {
         0 0 var(--glow-strength) var(--green-glow),
         inset 0 0 60px rgba(0, 255, 65, 0.03);
     z-index: 400;
-    transform: translateX(calc(-100% - 200px));
-    transition: transform 0.4s ease, visibility 0.4s;
-    visibility: hidden;
+    left: -100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: left 0.4s ease, opacity 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
 .detail-panel.active {
-    transform: translateX(0);
-    visibility: visible;
+    left: 160px;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .detail-close {

@@ -487,9 +487,9 @@ body {
 .detail-panel {
     position: fixed;
     top: 5vh;
-    left: 3vw;
+    left: 100px;
     width: 500px;
-    max-width: 40vw;
+    max-width: calc(100vw - 200px);
     height: 90vh;
     background: rgba(5, 5, 5, 0.97);
     border: 2px solid var(--green);

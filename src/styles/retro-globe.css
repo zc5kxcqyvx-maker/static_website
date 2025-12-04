@@ -487,16 +487,16 @@ body {
 .detail-panel {
     position: fixed;
     top: 5vh;
-    left: 100px;
-    width: 500px;
-    max-width: calc(100vw - 200px);
+    left: 160px;
+    width: 480px;
+    max-width: calc(100vw - 250px);
     height: 90vh;
     background: rgba(5, 5, 5, 0.97);
     border: 2px solid var(--green);
     box-shadow:
         0 0 var(--glow-strength) var(--green-glow),
         inset 0 0 60px rgba(0, 255, 65, 0.03);
-    z-index: 15;
+    z-index: 400;
     transform: translateX(-120%);
     transition: transform 0.4s ease;
     display: flex;

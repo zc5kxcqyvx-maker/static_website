@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutz | STASIC</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --green: #00ff41;
+            --green-dim: #00aa2a;
+            --green-glow: rgba(0, 255, 65, 0.4);
+            --green-dark: #003d10;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--green);
+            font-family: 'VT323', monospace;
+            min-height: 100vh;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid var(--green);
+            padding: 2rem;
+            box-shadow: 0 0 20px var(--green-glow);
+        }
+
+        .header {
+            border-bottom: 1px solid var(--green-dim);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            letter-spacing: 0.2em;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            color: var(--green-dim);
+            letter-spacing: 0.15em;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .content p {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .content ul {
+            margin: 0.75rem 0 0.75rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .content a {
+            color: var(--green);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--green);
+            color: var(--green);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--green);
+            color: var(--bg);
+            box-shadow: 0 0 15px var(--green-glow);
+        }
+
+        /* Scanlines */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.06) 0px,
+                rgba(0, 0, 0, 0.06) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+
+        .placeholder {
+            border: 1px dashed var(--green-dim);
+            padding: 1rem;
+            margin: 1rem 0;
+            color: var(--green-dim);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>> DATENSCHUTZERKLÄRUNG</h1>
+        </div>
+
+        <div class="content">
+            <div class="section-title">[1. DATENSCHUTZ AUF EINEN BLICK]</div>
+
+            <p>> Allgemeine Hinweise:</p>
+            <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+
+            <div class="section-title">[2. VERANTWORTLICHER]</div>
+
+            <div class="placeholder">
+                > BITTE ERGÄNZEN:<br>
+                - Name / Firma<br>
+                - Anschrift<br>
+                - E-Mail: stayrealsick@gmail.com
+            </div>
+
+            <div class="section-title">[3. DATENERFASSUNG AUF DIESER WEBSITE]</div>
+
+            <p>> Wer ist verantwortlich für die Datenerfassung auf dieser Website?</p>
+            <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Die Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+
+            <p>> Wie erfassen wir Ihre Daten?</p>
+            <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
+            <p>Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.</p>
+
+            <div class="section-title">[4. NEWSLETTER]</div>
+
+            <p>> Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind.</p>
+
+            <p>> Die Datenverarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die erteilte Einwilligung können Sie jederzeit widerrufen. Die Rechtmäßigkeit der bereits erfolgten Datenverarbeitungsvorgänge bleibt vom Widerruf unberührt.</p>
+
+            <p>> Die von Ihnen zum Zwecke des Newsletter-Bezugs bei uns hinterlegten Daten werden von uns bis zu Ihrer Austragung aus dem Newsletter gespeichert und nach Abbestellung gelöscht.</p>
+
+            <div class="section-title">[5. EXTERNE DIENSTE]</div>
+
+            <p>> Diese Website nutzt folgende externe Dienste:</p>
+            <ul>
+                <li>Google Fonts - zur Darstellung von Schriftarten</li>
+                <li>Bandcamp - für eingebettete Musik-Player</li>
+                <li>CountAPI - für den Besucherzähler</li>
+            </ul>
+
+            <p>> Bei Nutzung dieser Dienste können Daten an deren Server übertragen werden. Weitere Informationen finden Sie in den Datenschutzerklärungen der jeweiligen Anbieter.</p>
+
+            <div class="section-title">[6. IHRE RECHTE]</div>
+
+            <p>> Sie haben jederzeit das Recht:</p>
+            <ul>
+                <li>Auskunft über Ihre gespeicherten personenbezogenen Daten zu erhalten</li>
+                <li>Die Berichtigung unrichtiger Daten zu verlangen</li>
+                <li>Die Löschung Ihrer Daten zu verlangen</li>
+                <li>Die Einschränkung der Datenverarbeitung zu verlangen</li>
+                <li>Der Datenverarbeitung zu widersprechen</li>
+                <li>Datenübertragbarkeit zu verlangen</li>
+            </ul>
+
+            <p>> Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten, bei Auskünften, Berichtigung, Sperrung oder Löschung von Daten wenden Sie sich bitte an: <a href="mailto:stayrealsick@gmail.com">stayrealsick@gmail.com</a></p>
+
+            <div class="section-title">[7. BESCHWERDERECHT]</div>
+
+            <p>> Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren.</p>
+
+            <a href="/" class="back-link">[ZURÜCK ZUR HAUPTSEITE]</a>
+        </div>
+    </div>
+</body>
+</html>

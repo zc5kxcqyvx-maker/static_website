@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STASIC | Electronic Music from Berlin</title>
+    <meta name="description" content="STASIC - Electronic music producer from Berlin. Dystopian soundscapes, Techno, and experimental electronic music.">
+    <meta name="keywords" content="STASIC, electronic music, techno, Berlin, dystopian, experimental, producer">
+    <meta name="author" content="STASIC">
+    <meta name="theme-color" content="#00ff41">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stasic.net/">
+    <meta property="og:title" content="STASIC | Electronic Music from Berlin">
+    <meta property="og:description" content="Dystopian soundscapes exploring the intersection of technology and humanity. Dark, pulsating rhythms designed for the dancefloor and the mind.">
+    <meta property="og:image" content="https://f4.bcbits.com/img/a1046418851_10.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://stasic.net/">
+    <meta name="twitter:title" content="STASIC | Electronic Music from Berlin">
+    <meta name="twitter:description" content="Dystopian soundscapes exploring the intersection of technology and humanity. Dark, pulsating rhythms designed for the dancefloor and the mind.">
+    <meta name="twitter:image" content="https://f4.bcbits.com/img/a1046418851_10.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <link rel="stylesheet" href="styles/retro-globe.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="boot-screen">
+            <div class="boot-line">> STASIC TERMINAL v2.5</div>
+            <div class="boot-line">> INITIALIZING SYSTEM...</div>
+            <div class="boot-line">> LOADING AUDIO DRIVERS... <span class="status-ok">[OK]</span></div>
+            <div class="boot-line">> ESTABLISHING CONNECTION... <span class="status-ok">[OK]</span></div>
+            <div class="boot-line">> RENDERING GLOBE MATRIX... <span class="status-ok">[OK]</span></div>
+            <div class="boot-line">> CALIBRATING CRT DISPLAY... <span class="status-ok">[OK]</span></div>
+            <div class="boot-line">> SYNCING FREQUENCIES... <span class="status-ok">[OK]</span></div>
+            <div class="boot-line final">> SYSTEM READY_</div>
+            <div class="boot-progress">
+                <div class="boot-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CRT Effects -->
+    <div class="crt-bulge"></div>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+    <div class="flicker"></div>
+    <div class="sync-line"></div>
+
+    <!-- Connection Lines SVG Overlay -->
+    <svg id="connectionLines" class="connection-lines"></svg>
+
+    <!-- Globe Labels Container -->
+    <div id="releaseLabels" class="globe-labels"></div>
+
+    <!-- Globe Container -->
+    <div class="globe-container">
+        <canvas id="globe"></canvas>
+        <div class="globe-glow"></div>
+    </div>
+
+    <!-- Detail Panel (opens on left) -->
+    <div class="detail-panel" id="detailPanel">
+        <button class="detail-close" id="detailClose">✕</button>
+        <div class="detail-content" id="detailContent">
+            <!-- Dynamic content loaded here -->
+        </div>
+    </div>
+
+    <!-- Content Panel -->
+    <div class="content-panel">
+        <!-- Terminal Header -->
+        <header class="terminal-header">
+            <div class="terminal-title">
+                <span class="terminal-prompt">></span>
+                <span class="terminal-text">STASIC_TERMINAL v2.5</span>
+            </div>
+            <div class="terminal-status">
+                <span class="status-dot"></span>
+                <span>ONLINE</span>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <main class="terminal-content" id="content">
+
+            <!-- Section: Init -->
+            <section class="section" data-section="0">
+                <div class="section-marker">[INIT]</div>
+                <div class="ascii-logo">
+ ███████╗████████╗ █████╗ ███████╗██╗ ██████╗
+ ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║██╔════╝
+ ███████╗   ██║   ███████║███████╗██║██║
+ ╚════██║   ██║   ██╔══██║╚════██║██║██║
+ ███████║   ██║   ██║  ██║███████║██║╚██████╗
+ ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝
+                </div>
+                <p class="typewriter">ELECTRONIC MUSIC _ BERLIN, DE</p>
+                <div class="coordinates">
+                    <span>LAT: 52.5200° N</span>
+                    <span>LON: 13.4050° E</span>
+                </div>
+                <div class="scroll-hint">
+                    <span>[SCROLL TO NAVIGATE]</span>
+                    <div class="scroll-arrow">▼</div>
+                </div>
+            </section>
+
+            <!-- Section: Releases -->
+            <section class="section" data-section="1">
+                <div class="section-marker">[RELEASES]</div>
+                <div class="release-grid">
+
+                    <!-- Dystopian non-fiction -->
+                    <div class="release-card featured"
+                         data-release="dystopian-non-fiction"
+                         data-title="DYSTOPIAN NON-FICTION"
+                         data-type="ALBUM"
+                         data-year="2025"
+                         data-tracks="12"
+                         data-duration="46:49"
+                         data-artwork="https://f4.bcbits.com/img/a1046418851_10.jpg"
+                         data-links='[{"name":"BANDCAMP","url":"https://stasic.bandcamp.com/album/dystopian-non-fiction"},{"name":"SPOTIFY","url":"https://open.spotify.com/album/0S8LgBeldMmOuueEiGQl11"},{"name":"APPLE","url":"https://music.apple.com/de/album/dystopian-non-fiction/1826838533"}]'
+                         data-tracklist='[{"num":"01","title":"Propaganda","time":"4:01"},{"num":"02","title":"Nein","time":"3:17"},{"num":"03","title":"Business","time":"5:28"},{"num":"04","title":"Common Sense","time":"1:19"},{"num":"05","title":"Drill","time":"5:12"},{"num":"06","title":"Fairytales","time":"3:55"},{"num":"07","title":"Stop the Terror","time":"4:26"},{"num":"08","title":"Fake News","time":"2:05"},{"num":"09","title":"Bastion","time":"3:41"},{"num":"10","title":"Bernd Hacke","time":"2:13"},{"num":"11","title":"Tutte le genti","time":"1:17"},{"num":"12","title":"2033","time":"9:55"}]'>
+                        <div class="release-artwork">
+                            <img src="https://f4.bcbits.com/img/a1046418851_10.jpg" alt="Dystopian Non-Fiction" loading="lazy">
+                            <div class="artwork-scanline"></div>
+                        </div>
+                        <div class="release-info">
+                            <span class="release-type">[ALBUM]</span>
+                            <h3 class="release-name">> DYSTOPIAN NON-FICTION</h3>
+                            <span class="release-year">2025</span>
+                        </div>
+                    </div>
+
+                    <!-- TECHNOIR -->
+                    <div class="release-card"
+                         data-release="technoir"
+                         data-title="TECHNOIR"
+                         data-type="EP"
+                         data-year="2025"
+                         data-tracks="3"
+                         data-duration="21:25"
+                         data-artwork="https://f4.bcbits.com/img/a0932147183_10.jpg"
+                         data-links='[{"name":"BANDCAMP","url":"https://stasic.bandcamp.com/album/technoir"},{"name":"SPOTIFY","url":"https://open.spotify.com/album/3nVVxPjGKPKPV5lVflNRgg"},{"name":"APPLE","url":"https://music.apple.com/de/album/technoir-single/1804831085"}]'
+                         data-tracklist='[{"num":"01","title":"Intent","time":"7:12"},{"num":"02","title":"Bias","time":"6:58"},{"num":"03","title":"Overflow","time":"7:15"}]'>
+                        <div class="release-artwork">
+                            <img src="https://f4.bcbits.com/img/a0932147183_10.jpg" alt="TECHNOIR" loading="lazy">
+                            <div class="artwork-scanline"></div>
+                        </div>
+                        <div class="release-info">
+                            <span class="release-type">[EP]</span>
+                            <h3 class="release-name">> TECHNOIR</h3>
+                            <span class="release-year">2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Business -->
+                    <div class="release-card"
+                         data-release="business"
+                         data-title="BUSINESS"
+                         data-type="SINGLE"
+                         data-year="2025"
+                         data-tracks="2"
+                         data-duration="10:56"
+                         data-artwork="https://f4.bcbits.com/img/a3428656714_10.jpg"
+                         data-links='[{"name":"BANDCAMP","url":"https://stasic.bandcamp.com/track/business"},{"name":"SPOTIFY","url":"https://open.spotify.com/track/5xPHjas9PB8e2nqWkpNdnI"},{"name":"APPLE","url":"https://music.apple.com/de/album/business/1826838533?i=1826838534"}]'
+                         data-tracklist='[{"num":"01","title":"Business","time":"5:28"},{"num":"02","title":"Business (Instrumental)","time":"5:28"}]'>
+                        <div class="release-artwork">
+                            <img src="https://f4.bcbits.com/img/a3428656714_10.jpg" alt="Business" loading="lazy">
+                            <div class="artwork-scanline"></div>
+                        </div>
+                        <div class="release-info">
+                            <span class="release-type">[SINGLE]</span>
+                            <h3 class="release-name">> BUSINESS</h3>
+                            <span class="release-year">2025</span>
+                        </div>
+                    </div>
+
+                    <!-- New Beginning -->
+                    <div class="release-card"
+                         data-release="new-beginning"
+                         data-title="NEW BEGINNING"
+                         data-type="SINGLE"
+                         data-year="2025"
+                         data-tracks="1"
+                         data-duration="4:32"
+                         data-artwork="https://f4.bcbits.com/img/a2470052374_10.jpg"
+                         data-links='[{"name":"BANDCAMP","url":"https://stasic.bandcamp.com/track/new-beginning"},{"name":"SPOTIFY","url":"https://open.spotify.com/track/new-beginning-stasic"},{"name":"APPLE","url":"https://music.apple.com/de/album/new-beginning/1826838533"}]'
+                         data-tracklist='[{"num":"01","title":"New Beginning","time":"4:32"}]'>
+                        <div class="release-artwork">
+                            <img src="https://f4.bcbits.com/img/a2470052374_10.jpg" alt="New Beginning" loading="lazy">
+                            <div class="artwork-scanline"></div>
+                        </div>
+                        <div class="release-info">
+                            <span class="release-type">[SINGLE]</span>
+                            <h3 class="release-name">> NEW BEGINNING</h3>
+                            <span class="release-year">2025</span>
+                        </div>
+                    </div>
+
+                    <!-- These Days -->
+                    <div class="release-card"
+                         data-release="these-days"
+                         data-title="THESE DAYS"
+                         data-type="SINGLE"
+                         data-year="2022"
+                         data-tracks="2"
+                         data-duration="9:01"
+                         data-artwork="https://i.scdn.co/image/ab67616d00001e02558995320af0e1a98dab7c9e"
+                         data-links='[{"name":"SPOTIFY","url":"https://open.spotify.com/album/2Jpbic6qg16rnjkEhLxJP2"},{"name":"APPLE","url":"https://music.apple.com/de/album/these-days/1651174180"}]'
+                         data-tracklist='[{"num":"01","title":"These Days","time":"5:30"},{"num":"02","title":"These Days (Radio Edit)","time":"3:31"}]'>
+                        <div class="release-artwork">
+                            <img src="https://i.scdn.co/image/ab67616d00001e02558995320af0e1a98dab7c9e" alt="These Days" loading="lazy">
+                            <div class="artwork-scanline"></div>
+                        </div>
+                        <div class="release-info">
+                            <span class="release-type">[SINGLE]</span>
+                            <h3 class="release-name">> THESE DAYS</h3>
+                            <span class="release-year">2022</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section: Live -->
+            <section class="section" data-section="2">
+                <div class="section-marker">[LIVE]</div>
+                <div class="live-header">
+                    <span class="live-status-indicator"></span>
+                    <span class="live-status-text">UPCOMING TRANSMISSIONS</span>
+                </div>
+                <div class="shows-list">
+                    <div class="show-item">
+                        <div class="show-date">
+                            <span class="show-day">TBA</span>
+                            <span class="show-month">2025</span>
+                        </div>
+                        <div class="show-details">
+                            <span class="show-venue">> AWAITING COORDINATES</span>
+                            <span class="show-location">BERLIN, DE</span>
+                        </div>
+                        <div class="show-status">[PENDING]</div>
+                    </div>
+                    <div class="show-item no-shows">
+                        <span class="no-shows-text">> NO CONFIRMED DATES AT THIS TIME</span>
+                        <span class="no-shows-sub">> MONITORING FREQUENCIES...</span>
+                    </div>
+                </div>
+                <div class="booking-cta">
+                    <span class="booking-label">BOOKING INQUIRIES:</span>
+                    <a href="mailto:stayrealsick@gmail.com" class="booking-link">stayrealsick@gmail.com</a>
+                </div>
+            </section>
+
+            <!-- Section: About -->
+            <section class="section" data-section="3">
+                <div class="section-marker">[ABOUT]</div>
+                <div class="about-block">
+                    <div class="data-line">
+                        <span class="data-label">TYPE:</span>
+                        <span class="data-value">ELECTRONIC MUSIC PROJECT</span>
+                    </div>
+                    <div class="data-line">
+                        <span class="data-label">LOCATION:</span>
+                        <span class="data-value">BERLIN, GERMANY</span>
+                    </div>
+                    <div class="data-line">
+                        <span class="data-label">GENRE:</span>
+                        <span class="data-value">TECHNO / ELECTRONIC / EXPERIMENTAL</span>
+                    </div>
+                    <div class="data-line">
+                        <span class="data-label">ACTIVE:</span>
+                        <span class="data-value">2022 - PRESENT</span>
+                    </div>
+                    <div class="data-line">
+                        <span class="data-label">RELEASES:</span>
+                        <span class="data-value">6 PROJECTS | 21 TRACKS</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>> Dystopian soundscapes exploring the intersection of technology and humanity. Dark, pulsating rhythms designed for the dancefloor and the mind.</p>
+                </div>
+            </section>
+
+            <!-- Section: Connect -->
+            <section class="section" data-section="4">
+                <div class="section-marker">[CONNECT]</div>
+                <p class="connect-intro">> Platform nodes active. Hover to highlight connection.</p>
+                <div class="links-grid">
+                    <a href="https://open.spotify.com/album/2Jpbic6qg16rnjkEhLxJP2" target="_blank" class="link-item" data-platform="spotify">
+                        <span class="link-marker" style="background: #1DB954;"></span>
+                        <span class="link-name">SPOTIFY</span>
+                        <span class="link-location">Stockholm, SE</span>
+                    </a>
+                    <a href="https://stasic.bandcamp.com/" target="_blank" class="link-item" data-platform="bandcamp">
+                        <span class="link-marker" style="background: #1DA0C3;"></span>
+                        <span class="link-name">BANDCAMP</span>
+                        <span class="link-location">San Francisco, US</span>
+                    </a>
+                    <a href="https://music.apple.com/de/artist/stasic/1650234910" target="_blank" class="link-item" data-platform="apple">
+                        <span class="link-marker" style="background: #FC3C44;"></span>
+                        <span class="link-name">APPLE MUSIC</span>
+                        <span class="link-location">Cupertino, US</span>
+                    </a>
+                    <a href="https://soundcloud.com/stayrealsick" target="_blank" class="link-item" data-platform="soundcloud">
+                        <span class="link-marker" style="background: #FF5500;"></span>
+                        <span class="link-name">SOUNDCLOUD</span>
+                        <span class="link-location">Berlin, DE</span>
+                    </a>
+                    <a href="https://www.instagram.com/stayrealsick/" target="_blank" class="link-item" data-platform="instagram">
+                        <span class="link-marker" style="background: #E1306C;"></span>
+                        <span class="link-name">INSTAGRAM</span>
+                        <span class="link-location">Menlo Park, US</span>
+                    </a>
+                </div>
+
+                <div class="terminal-footer">
+                    <div class="footer-line">─────────────────────────────────</div>
+                    <div class="visitor-counter">
+                        <span class="counter-label">VISITORS:</span>
+                        <span class="counter-value" id="visitorCount">------</span>
+                    </div>
+                    <div class="footer-text">© 2025 STASIC | ALL RIGHTS RESERVED</div>
+                    <a href="mailto:stayrealsick@gmail.com" class="footer-email">stayrealsick@gmail.com</a>
+                    <div class="footer-legal">
+                        <a href="impressum.html">IMPRESSUM</a>
+                        <span class="legal-divider">|</span>
+                        <a href="datenschutz.html">DATENSCHUTZ</a>
+                    </div>
+                    <div class="footer-text blink-slow">CONNECTION ESTABLISHED_</div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Signal Meter -->
+        <div class="signal-meter">
+            <div class="meter-label">SIGNAL</div>
+            <div class="meter-bars">
+                <div class="meter-bar"></div>
+                <div class="meter-bar"></div>
+                <div class="meter-bar"></div>
+                <div class="meter-bar"></div>
+                <div class="meter-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
+        <source src="assets/audio/websitebeat.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="audioToggle" class="audio-toggle" title="Toggle Audio">
+        <span class="audio-icon">♪ OFF</span>
+    </button>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress">
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-sections">
+            <span data-target="0">INIT</span>
+            <span data-target="1">RELS</span>
+            <span data-target="2">LIVE</span>
+            <span data-target="3">INFO</span>
+            <span data-target="4">LINK</span>
+        </div>
+    </div>
+
+    <script src="scripts/retro-globe.js"></script>
+</body>
+</html>

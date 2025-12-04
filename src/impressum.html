@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum | STASIC</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --green: #00ff41;
+            --green-dim: #00aa2a;
+            --green-glow: rgba(0, 255, 65, 0.4);
+            --green-dark: #003d10;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--green);
+            font-family: 'VT323', monospace;
+            min-height: 100vh;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid var(--green);
+            padding: 2rem;
+            box-shadow: 0 0 20px var(--green-glow);
+        }
+
+        .header {
+            border-bottom: 1px solid var(--green-dim);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            letter-spacing: 0.2em;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            color: var(--green-dim);
+            letter-spacing: 0.15em;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .content p {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .content a {
+            color: var(--green);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--green);
+            color: var(--green);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--green);
+            color: var(--bg);
+            box-shadow: 0 0 15px var(--green-glow);
+        }
+
+        /* Scanlines */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.06) 0px,
+                rgba(0, 0, 0, 0.06) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+
+        .placeholder {
+            border: 1px dashed var(--green-dim);
+            padding: 1rem;
+            margin: 1rem 0;
+            color: var(--green-dim);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>> IMPRESSUM</h1>
+        </div>
+
+        <div class="content">
+            <div class="section-title">[ANGABEN GEMÄSS § 5 TMG]</div>
+
+            <div class="placeholder">
+                > BITTE ERGÄNZEN:<br>
+                - Vollständiger Name / Firmenname<br>
+                - Straße und Hausnummer<br>
+                - PLZ und Ort<br>
+                - Land
+            </div>
+
+            <div class="section-title">[KONTAKT]</div>
+            <p>> E-Mail: <a href="mailto:stayrealsick@gmail.com">stayrealsick@gmail.com</a></p>
+
+            <div class="placeholder">
+                > OPTIONAL:<br>
+                - Telefonnummer
+            </div>
+
+            <div class="section-title">[VERANTWORTLICH FÜR DEN INHALT NACH § 55 ABS. 2 RSTV]</div>
+
+            <div class="placeholder">
+                > BITTE ERGÄNZEN:<br>
+                - Name des Verantwortlichen<br>
+                - Anschrift
+            </div>
+
+            <div class="section-title">[HAFTUNGSAUSSCHLUSS]</div>
+
+            <p>> Haftung für Inhalte:</p>
+            <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+
+            <p>> Haftung für Links:</p>
+            <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+
+            <div class="section-title">[URHEBERRECHT]</div>
+            <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+
+            <a href="/" class="back-link">[ZURÜCK ZUR HAUPTSEITE]</a>
+        </div>
+    </div>
+</body>
+</html>

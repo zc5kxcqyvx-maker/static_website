@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | CONNECTION LOST - STASIC</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --green: #00ff41;
+            --green-dim: #00aa2a;
+            --green-glow: rgba(0, 255, 65, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--green);
+            font-family: 'VT323', monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            line-height: 1;
+            text-shadow: 0 0 30px var(--green-glow);
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-5px, 2px); }
+            94% { transform: translate(5px, -2px); }
+            96% { transform: translate(-3px, 0); }
+            98% { transform: translate(3px, 0); }
+        }
+
+        .error-title {
+            font-size: 2rem;
+            margin: 1rem 0;
+            color: var(--green);
+            text-shadow: 0 0 10px var(--green-glow);
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            color: var(--green-dim);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .terminal-output {
+            text-align: left;
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid var(--green-dim);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .terminal-output div {
+            margin-bottom: 0.5rem;
+        }
+
+        .error-status {
+            color: #ff0040;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--green);
+            color: var(--green);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--green);
+            color: var(--bg);
+            box-shadow: 0 0 20px var(--green-glow);
+        }
+
+        /* Scanlines */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.06) 0px,
+                rgba(0, 0, 0, 0.06) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+
+        /* Vignette */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            box-shadow: inset 0 0 150px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">> CONNECTION LOST</h1>
+        <p class="error-message">The signal you're looking for has been lost in the void.</p>
+
+        <div class="terminal-output">
+            <div>> SCANNING NETWORK...</div>
+            <div>> TARGET: <span class="error-status">[NOT FOUND]</span></div>
+            <div>> STATUS: CONNECTION TERMINATED</div>
+            <div>> RECOMMENDATION: RETURN TO MAIN TERMINAL</div>
+            <div>> <span class="blink">_</span></div>
+        </div>
+
+        <a href="/" class="back-link">[RETURN TO BASE]</a>
+    </div>
+</body>
+</html>

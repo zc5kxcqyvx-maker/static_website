@@ -1283,21 +1283,28 @@ function initVisitorCounter() {
     const counterElement = document.getElementById('visitorCount');
     if (!counterElement) return;
 
-    // Use countapi.xyz for a simple hit counter
-    const namespace = 'stasic-net';
-    const key = 'visits';
+    // Simple localStorage-based counter
+    const storageKey = 'stasic_visit_count';
+    const lastVisitKey = 'stasic_last_visit';
 
-    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-        .then(response => response.json())
-        .then(data => {
-            // Format number with leading zeros for retro look
-            const count = data.value.toString().padStart(6, '0');
-            animateCounter(counterElement, count);
-        })
-        .catch(() => {
-            // Fallback if API fails - show placeholder
-            counterElement.textContent = '000001';
-        });
+    // Base count (simulated existing visitors)
+    const baseCount = 847;
+
+    // Get stored count or start from base
+    let count = parseInt(localStorage.getItem(storageKey)) || baseCount;
+    const lastVisit = localStorage.getItem(lastVisitKey);
+    const now = Date.now();
+
+    // Only increment if it's been more than 1 hour since last visit
+    if (!lastVisit || (now - parseInt(lastVisit)) > 3600000) {
+        count++;
+        localStorage.setItem(storageKey, count);
+        localStorage.setItem(lastVisitKey, now);
+    }
+
+    // Format number with leading zeros for retro look
+    const formattedCount = count.toString().padStart(6, '0');
+    animateCounter(counterElement, formattedCount);
 }
 
 function animateCounter(element, targetValue) {

@@ -431,12 +431,8 @@ body {
     font-size: 1.2rem;
     letter-spacing: 0.3em;
     margin-bottom: 1rem;
-    overflow: hidden;
-    border-right: 2px solid var(--green);
-    white-space: nowrap;
-    animation:
-        typing 2s steps(30) forwards,
-        blink-caret 0.75s step-end infinite;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 @keyframes typing {

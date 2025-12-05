@@ -1236,29 +1236,22 @@ function openDetailPanel(card) {
     // Build streaming links HTML
     let linksHTML = '';
     links.forEach(link => {
-        linksHTML += `<a href="${link.url}" target="_blank" class="detail-stream-btn">[${link.name}]</a>`;
+        linksHTML += `<a href="${link.url}" target="_blank" rel="noopener" class="detail-stream-btn">[${link.name}]</a>`;
     });
 
-    // Get Bandcamp embed info
-    const bandcampLink = links.find(l => l.name === 'BANDCAMP');
-    let embedHTML = '';
-    if (bandcampLink) {
-        // Extract album/track ID from URL for embedding
-        const embedId = getBandcampEmbedId(card.dataset.release);
-        if (embedId) {
-            embedHTML = `
-                <div class="detail-player">
-                    <div class="detail-player-title">[PREVIEW]</div>
-                    <div class="player-wrapper">
-                        <iframe style="border: 0; width: 100%; height: 120px;"
-                            src="https://bandcamp.com/EmbeddedPlayer/${embedId}/size=large/bgcol=0a0a0a/linkcol=00ff41/tracklist=false/artwork=none/transparent=true/"
-                            seamless loading="lazy">
-                        </iframe>
-                    </div>
-                </div>
-            `;
+    // Add SoundCloud link if not already present
+    const hasSoundCloud = links.some(l => l.name === 'SOUNDCLOUD');
+    if (!hasSoundCloud) {
+        const scUrl = getSoundCloudEmbed(card.dataset.release);
+        if (scUrl) {
+            linksHTML += `<a href="${scUrl}" target="_blank" rel="noopener" class="detail-stream-btn">[SOUNDCLOUD]</a>`;
         }
     }
+
+    // Build SoundCloud player
+    const releaseName = card.dataset.release;
+    const isPlaylist = type === 'ALBUM' || type === 'EP';
+    const embedHTML = buildSoundCloudPlayer(releaseName, isPlaylist);
 
     // Build content
     detailContent.innerHTML = `
@@ -1299,17 +1292,43 @@ function closeDetailPanel() {
     resetGlobeRotation();
 }
 
-// Get Bandcamp embed ID for releases
-function getBandcampEmbedId(releaseName) {
-    // Bandcamp embed IDs (album= or track=)
-    const embedIds = {
-        'dystopian-non-fiction': 'album=2618498562',
-        'technoir': 'album=2108570498',
-        'business': 'track=2091523695',
-        'new-beginning': 'track=1377908498',
-        // 'these-days' not on Bandcamp
+// Get SoundCloud embed URL for releases
+function getSoundCloudEmbed(releaseName) {
+    // SoundCloud track/playlist URLs for embedding
+    const soundcloudUrls = {
+        'dystopian-non-fiction': 'https://soundcloud.com/stayrealsick/sets/dystopian-non-fiction',
+        'technoir': 'https://soundcloud.com/stayrealsick/sets/technoir',
+        'business': 'https://soundcloud.com/stayrealsick/business',
+        'new-beginning': 'https://soundcloud.com/stayrealsick/new-beginning',
+        'these-days': 'https://soundcloud.com/stayrealsick/these-days'
     };
-    return embedIds[releaseName] || null;
+    return soundcloudUrls[releaseName] || null;
+}
+
+// Build SoundCloud player HTML
+function buildSoundCloudPlayer(releaseName, isPlaylist = false) {
+    const url = getSoundCloudEmbed(releaseName);
+    if (!url) return '';
+
+    const encodedUrl = encodeURIComponent(url);
+    const height = isPlaylist ? '300' : '166';
+
+    return `
+        <div class="detail-player soundcloud-player">
+            <div class="detail-player-title">[SOUNDCLOUD PLAYER]</div>
+            <div class="player-wrapper">
+                <iframe
+                    width="100%"
+                    height="${height}"
+                    scrolling="no"
+                    frameborder="no"
+                    allow="autoplay"
+                    loading="lazy"
+                    src="https://w.soundcloud.com/player/?url=${encodedUrl}&color=%2300ff41&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
+                </iframe>
+            </div>
+        </div>
+    `;
 }
 
 // =====================================================

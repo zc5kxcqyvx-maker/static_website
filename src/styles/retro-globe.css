@@ -769,13 +769,62 @@ body {
 
 .player-wrapper {
     border: 1px solid var(--green-dark);
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    position: relative;
 }
 
 .player-wrapper iframe {
     display: block;
-    filter: saturate(0.8);
+    filter: saturate(0.7) brightness(0.95);
+}
+
+/* SoundCloud Player Specific */
+.soundcloud-player .player-wrapper {
+    border: 1px solid var(--green);
+    box-shadow:
+        0 0 10px rgba(0, 255, 65, 0.2),
+        inset 0 0 20px rgba(0, 255, 65, 0.05);
+}
+
+.soundcloud-player .player-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.03) 0px,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.soundcloud-player .player-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 30px rgba(0, 255, 65, 0.1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Loading state */
+.soundcloud-player .player-wrapper iframe {
+    filter: saturate(0.6) brightness(0.9) hue-rotate(80deg);
+    transition: filter 0.3s ease;
+}
+
+.soundcloud-player:hover .player-wrapper iframe {
+    filter: saturate(0.8) brightness(1) hue-rotate(80deg);
 }
 
 /* =====================================================
@@ -1736,7 +1785,20 @@ body {
     }
 
     .detail-artwork {
-        max-height: 50vh;
+        max-height: 40vh;
+    }
+
+    /* SoundCloud player on mobile */
+    .soundcloud-player .player-wrapper {
+        border-width: 1px;
+    }
+
+    .soundcloud-player .player-wrapper iframe {
+        height: 120px !important; /* Compact player on mobile */
+    }
+
+    .detail-player-title {
+        font-size: 0.65rem;
     }
 }
 

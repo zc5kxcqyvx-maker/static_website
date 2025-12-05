@@ -20,6 +20,8 @@ let platformMarkers = [];
 let releaseMarkers = [];
 let activeSection = 0;
 let isHovering = false; // Track if hovering over a location
+let animationId = null; // Track animation frame for cleanup
+let isAnimating = true; // Control animation loop
 
 // Audio visualizer variables
 let audioContext = null;
@@ -628,7 +630,9 @@ function resetGlobeRotation() {
 // =====================================================
 
 function animate() {
-    requestAnimationFrame(animate);
+    if (!isAnimating) return;
+
+    animationId = requestAnimationFrame(animate);
 
     // Smooth rotation interpolation (slower lerp = smoother)
     currentRotationX += (targetRotationX - currentRotationX) * 0.03;
@@ -687,6 +691,83 @@ function onWindowResize() {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(container.clientWidth, container.clientHeight);
+}
+
+// =====================================================
+// MEMORY MANAGEMENT & VISIBILITY
+// =====================================================
+
+/**
+ * Dispose Three.js resources to prevent memory leaks
+ */
+function disposeGlobe() {
+    if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+    }
+
+    if (globe) {
+        // Dispose all children
+        globe.traverse((child) => {
+            if (child.geometry) {
+                child.geometry.dispose();
+            }
+            if (child.material) {
+                if (Array.isArray(child.material)) {
+                    child.material.forEach(mat => mat.dispose());
+                } else {
+                    child.material.dispose();
+                }
+            }
+        });
+
+        scene.remove(globe);
+        globe = null;
+    }
+
+    // Clear arrays
+    globeLines = [];
+    platformMarkers = [];
+    releaseMarkers = [];
+
+    if (renderer) {
+        renderer.dispose();
+        renderer.forceContextLoss();
+        renderer = null;
+    }
+
+    scene = null;
+    camera = null;
+}
+
+/**
+ * Pause animation when tab is hidden (saves CPU/GPU)
+ */
+function initVisibilityHandler() {
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            // Tab is hidden - pause animation
+            isAnimating = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        } else {
+            // Tab is visible - resume animation
+            isAnimating = true;
+            if (renderer && !animationId) {
+                animate();
+            }
+        }
+    });
+
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+        disposeGlobe();
+        if (audioContext && audioContext.state !== 'closed') {
+            audioContext.close();
+        }
+    });
 }
 
 // =====================================================
@@ -963,6 +1044,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show preloader, then init site
     initPreloader(() => {
         initGlobe();
+        initVisibilityHandler(); // Memory management
         initScrollHandler();
         initMouseParallax();
         initPlatformHover();
@@ -1092,6 +1174,14 @@ function initDetailPanel() {
         card.addEventListener('click', (e) => {
             e.preventDefault();
             openDetailPanel(card);
+        });
+
+        // Keyboard support: Enter/Space to activate
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openDetailPanel(card);
+            }
         });
     });
 
@@ -1236,19 +1326,25 @@ function initAudioPlayer() {
     // Set initial volume
     audio.volume = 0.5;
 
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', async () => {
         if (audio.paused) {
-            // Initialize audio context on first play (required by browsers)
-            if (!isAudioInitialized) {
-                initAudioAnalyser(audio);
-            }
+            try {
+                // Initialize audio context on first play (required by browsers)
+                if (!isAudioInitialized) {
+                    await initAudioAnalyser(audio);
+                }
 
-            audio.play().then(() => {
+                await audio.play();
                 toggle.classList.add('playing');
                 icon.textContent = '♪ ON';
-            }).catch(err => {
-                console.log('Audio playback failed:', err);
-            });
+            } catch (err) {
+                console.warn('Audio playback failed:', err);
+                // Show user-friendly feedback
+                icon.textContent = '♪ ERR';
+                setTimeout(() => {
+                    icon.textContent = '♪ OFF';
+                }, 2000);
+            }
         } else {
             audio.pause();
             toggle.classList.remove('playing');
@@ -1257,22 +1353,34 @@ function initAudioPlayer() {
     });
 }
 
-function initAudioAnalyser(audio) {
-    // Create audio context
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    analyser = audioContext.createAnalyser();
+async function initAudioAnalyser(audio) {
+    try {
+        // Create audio context
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-    // Connect audio to analyser
-    const source = audioContext.createMediaElementSource(audio);
-    source.connect(analyser);
-    analyser.connect(audioContext.destination);
+        // Resume audio context if suspended (required by Chrome autoplay policy)
+        if (audioContext.state === 'suspended') {
+            await audioContext.resume();
+        }
 
-    // Configure analyser
-    analyser.fftSize = 256;
-    const bufferLength = analyser.frequencyBinCount;
-    dataArray = new Uint8Array(bufferLength);
+        analyser = audioContext.createAnalyser();
 
-    isAudioInitialized = true;
+        // Connect audio to analyser
+        const source = audioContext.createMediaElementSource(audio);
+        source.connect(analyser);
+        analyser.connect(audioContext.destination);
+
+        // Configure analyser
+        analyser.fftSize = 256;
+        const bufferLength = analyser.frequencyBinCount;
+        dataArray = new Uint8Array(bufferLength);
+
+        isAudioInitialized = true;
+    } catch (error) {
+        console.warn('Audio analyser initialization failed:', error);
+        // Still allow basic audio playback without visualization
+        isAudioInitialized = true;
+    }
 }
 
 // =====================================================

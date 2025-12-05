@@ -1278,8 +1278,7 @@ function openDetailPanel(card) {
     // Open panel
     detailPanel.classList.add('active');
 
-    // Rotate globe to release location
-    const releaseName = card.dataset.release;
+    // Rotate globe to release location (releaseName already defined above)
     const marker = releaseMarkers.find(m => m.release.name === releaseName);
     if (marker) {
         rotateGlobeToLocation(marker.release.lat, marker.release.lon);

@@ -1700,23 +1700,44 @@ body {
         display: none;
     }
 
-    /* Detail panel as modal on mobile */
+    /* Detail panel as fullscreen modal on mobile */
     .detail-panel {
         position: fixed;
         top: 0;
-        left: 0;
+        left: 0 !important; /* Override desktop left: -100% */
         width: 100%;
         max-width: 100%;
         height: 100%;
-        z-index: 100;
+        z-index: 500;
         border: none;
+        border-radius: 0;
+        opacity: 1; /* Always visible when transformed */
         transform: translateY(100%);
+        transition: transform 0.3s var(--easing-smooth);
+        background: var(--terminal-bg);
     }
 
     .detail-panel.active {
         transform: translateY(0);
+        left: 0 !important;
     }
 
+    .detail-close {
+        top: 1rem;
+        right: 1rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+
+    .detail-content {
+        padding: 1rem;
+        padding-top: 3.5rem; /* Space for close button */
+    }
+
+    .detail-artwork {
+        max-height: 50vh;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1731,6 +1752,48 @@ body {
 
     .release-title {
         font-size: 1rem;
+    }
+
+    /* Improve release cards on small screens */
+    .release-card {
+        padding: 0.5rem;
+        height: auto;
+        min-height: 70px;
+    }
+
+    .release-card .release-artwork {
+        width: 50px;
+        height: 50px;
+    }
+
+    .release-info .release-name {
+        font-size: 0.75rem;
+    }
+
+    /* Better touch feedback */
+    .release-card:active {
+        background: rgba(0, 255, 65, 0.15);
+        transform: scale(0.98);
+    }
+
+    /* Detail panel improvements */
+    .detail-title {
+        font-size: 1.1rem;
+    }
+
+    .detail-track {
+        padding: 0.6rem 0;
+        font-size: 0.75rem;
+    }
+
+    .detail-stream-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* Footer spacing */
+    .terminal-footer {
+        padding-bottom: 4rem; /* Space for audio toggle */
     }
 }
 

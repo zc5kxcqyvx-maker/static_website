@@ -1210,10 +1210,16 @@ function initDetailPanel() {
 function openDetailPanel(card) {
     const detailPanel = document.getElementById('detailPanel');
     const detailContent = document.getElementById('detailContent');
-
-    // Get data from card
-    const title = card.dataset.title;
     const type = card.dataset.type;
+
+    // Handle MERCH type differently
+    if (type === 'MERCH') {
+        openMerchDetailPanel(card, detailPanel, detailContent);
+        return;
+    }
+
+    // Get data from card (for releases)
+    const title = card.dataset.title;
     const year = card.dataset.year;
     const tracks = card.dataset.tracks;
     const duration = card.dataset.duration;
@@ -1288,7 +1294,83 @@ function openDetailPanel(card) {
 function closeDetailPanel() {
     const detailPanel = document.getElementById('detailPanel');
     detailPanel.classList.remove('active');
+    detailPanel.classList.remove('merch-panel');
     resetGlobeRotation();
+}
+
+// =====================================================
+// MERCH DETAIL PANEL
+// =====================================================
+
+function openMerchDetailPanel(card, detailPanel, detailContent) {
+    // Get merch data from card
+    const title = card.dataset.title;
+    const year = card.dataset.year;
+    const artwork = card.dataset.artwork;
+    const variants = JSON.parse(card.dataset.variants || '[]');
+    const price = card.dataset.price || '30 EUR';
+    const availability = card.dataset.availability || 'AVAILABLE';
+    const description = card.dataset.description || '';
+    const contact = card.dataset.contact || 'stayrealsick@gmail.com';
+
+    // Build variant images grid
+    let variantsHTML = '';
+    variants.forEach(variant => {
+        variantsHTML += `
+            <div class="merch-image-item">
+                <img src="${variant.image}" alt="${title} - ${variant.name}" loading="lazy">
+                <div class="artwork-scanline"></div>
+                <div class="merch-variant-label">${variant.name}</div>
+            </div>
+        `;
+    });
+
+    // Determine availability status class
+    const availabilityClass = availability === 'AVAILABLE' ? 'status-available' : 'status-limited';
+
+    // Build content
+    detailContent.innerHTML = `
+        <div class="merch-image-grid">
+            ${variantsHTML}
+        </div>
+        <div class="detail-header">
+            <div class="detail-type">[MERCH]</div>
+            <h2 class="detail-title">> ${title}</h2>
+            <div class="detail-meta">T-SHIRT | ${year}</div>
+        </div>
+        <div class="merch-info">
+            <div class="merch-info-row">
+                <span class="merch-info-label">PREIS:</span>
+                <span class="merch-info-value price">${price}</span>
+            </div>
+            <div class="merch-info-row">
+                <span class="merch-info-label">STATUS:</span>
+                <span class="merch-info-value ${availabilityClass}">${availability}</span>
+            </div>
+            <div class="merch-info-row">
+                <span class="merch-info-label">VARIANTEN:</span>
+                <span class="merch-info-value">${variants.map(v => v.name).join(', ')}</span>
+            </div>
+            <div class="merch-info-row">
+                <span class="merch-info-label">INFO:</span>
+                <span class="merch-info-value">${description}</span>
+            </div>
+        </div>
+        <div class="merch-cta">
+            <div class="merch-cta-title">[BESTELLEN]</div>
+            <a href="mailto:${contact}?subject=TECHNO PFLICHT T-Shirt Bestellung&body=Hallo,%0A%0Aich möchte ein TECHNO PFLICHT T-Shirt bestellen.%0A%0AVariante: %0AGröße: %0A%0ADanke!" class="merch-cta-btn primary">[KONTAKT / BESTELLUNG]</a>
+            <a href="merch.html" class="merch-cta-btn secondary">[MERCH SEITE]</a>
+        </div>
+    `;
+
+    // Add merch panel styling
+    detailPanel.classList.add('merch-panel');
+
+    // Open panel
+    detailPanel.classList.add('active');
+
+    // Rotate globe to Berlin (where merch is from)
+    rotateGlobeToLocation(52.52, 13.40);
 }
 
 // Get SoundCloud embed URL for releases

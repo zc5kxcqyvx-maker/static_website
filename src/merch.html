@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERCH | STASIC</title>
+    <meta name="description" content="STASIC Merchandise - TECHNO PFLICHT T-Shirt. Premium Qualitat aus Berlin.">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --green: #00ff41;
+            --green-dim: #00aa2a;
+            --green-glow: rgba(0, 255, 65, 0.4);
+            --green-dark: #003d10;
+            --amber: #ffb000;
+            --amber-glow: rgba(255, 176, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--green);
+            font-family: 'VT323', monospace;
+            min-height: 100vh;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 2px solid var(--amber);
+            padding: 2rem;
+            box-shadow: 0 0 20px var(--amber-glow);
+        }
+
+        .header {
+            border-bottom: 1px solid var(--amber);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            letter-spacing: 0.2em;
+            color: var(--amber);
+        }
+
+        .header-sub {
+            font-size: 0.85rem;
+            color: var(--green-dim);
+            margin-top: 0.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-image {
+            position: relative;
+            border: 1px solid var(--amber);
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-image .variant-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.5rem;
+            background: rgba(5, 5, 5, 0.9);
+            font-size: 0.8rem;
+            color: var(--amber);
+            text-align: center;
+            letter-spacing: 0.15em;
+        }
+
+        .scanline-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1) 0px,
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            color: var(--green-dim);
+            letter-spacing: 0.15em;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            color: var(--amber);
+            text-shadow: 0 0 10px var(--amber-glow);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-subtitle {
+            font-size: 0.9rem;
+            color: var(--green-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-block {
+            border: 1px solid var(--green-dark);
+            background: rgba(0, 255, 65, 0.02);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--green-dark);
+            font-size: 0.95rem;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            width: 120px;
+            color: var(--green-dim);
+            flex-shrink: 0;
+        }
+
+        .info-value {
+            color: var(--green);
+        }
+
+        .info-value.price {
+            color: var(--amber);
+            font-size: 1.1rem;
+            text-shadow: 0 0 5px var(--amber-glow);
+        }
+
+        .info-value.available {
+            color: var(--green);
+        }
+
+        .description {
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            color: var(--green-dim);
+        }
+
+        .cta-section {
+            margin-top: 2rem;
+        }
+
+        .cta-title {
+            font-size: 0.8rem;
+            color: var(--green-dim);
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--amber);
+            background: transparent;
+            color: var(--amber);
+            font-family: 'VT323', monospace;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--amber);
+            color: var(--bg);
+            box-shadow: 0 0 15px var(--amber-glow);
+        }
+
+        .cta-btn.primary {
+            background: var(--amber);
+            color: var(--bg);
+        }
+
+        .cta-btn.primary:hover {
+            background: transparent;
+            color: var(--amber);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--green);
+            color: var(--green);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--green);
+            color: var(--bg);
+            box-shadow: 0 0 15px var(--green-glow);
+        }
+
+        /* Scanlines */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.06) 0px,
+                rgba(0, 0, 0, 0.06) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--green-dark);
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--green-dim);
+        }
+
+        .footer a {
+            color: var(--green);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-shadow: 0 0 5px var(--green-glow);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-label {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>> MERCH</h1>
+            <div class="header-sub">STASIC MERCHANDISE | BERLIN, DE</div>
+        </div>
+
+        <div class="content">
+            <div class="product-grid">
+                <div class="product-image">
+                    <img src="assets/images/merch/techno-pflicht-black.jpg" alt="TECHNO PFLICHT T-Shirt Black">
+                    <div class="scanline-overlay"></div>
+                    <div class="variant-label">BLACK</div>
+                </div>
+                <div class="product-image">
+                    <img src="assets/images/merch/techno-pflicht-purple.jpg" alt="TECHNO PFLICHT T-Shirt Purple">
+                    <div class="scanline-overlay"></div>
+                    <div class="variant-label">PURPLE</div>
+                </div>
+            </div>
+
+            <h2 class="product-title">> TECHNO PFLICHT</h2>
+            <div class="product-subtitle">T-SHIRT | 2025</div>
+
+            <div class="info-block">
+                <div class="info-row">
+                    <span class="info-label">PREIS:</span>
+                    <span class="info-value price">30 EUR</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">STATUS:</span>
+                    <span class="info-value available">AVAILABLE</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">VARIANTEN:</span>
+                    <span class="info-value">BLACK, PURPLE</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">MATERIAL:</span>
+                    <span class="info-value">100% Baumwolle</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">DRUCK:</span>
+                    <span class="info-value">Siebdruck</span>
+                </div>
+            </div>
+
+            <p class="description">> Premium T-Shirt mit TECHNO PFLICHT Print. Hochwertige Qualitat, Siebdruck, 100% Baumwolle. Made in Berlin.</p>
+
+            <div class="cta-section">
+                <div class="cta-title">[BESTELLEN]</div>
+                <a href="mailto:stayrealsick@gmail.com?subject=TECHNO PFLICHT T-Shirt Bestellung&body=Hallo,%0A%0Aich moechte ein TECHNO PFLICHT T-Shirt bestellen.%0A%0AVariante: %0AGroesse: %0A%0ADanke!" class="cta-btn primary">[KONTAKT / BESTELLUNG]</a>
+            </div>
+
+            <a href="/" class="back-link">[ZURUECK ZUR HAUPTSEITE]</a>
+
+            <div class="footer">
+                <p>&copy; 2025 STASIC | <a href="impressum.html">IMPRESSUM</a> | <a href="datenschutz.html">DATENSCHUTZ</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

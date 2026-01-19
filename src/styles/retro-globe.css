@@ -1642,33 +1642,147 @@ body {
 }
 
 /* =====================================================
-   MERCH CARDS & DETAIL PANEL
+   MERCH SECTION
    ===================================================== */
 
-/* Merch card with amber accent */
-.release-card[data-type="MERCH"] {
-    border-color: var(--amber);
-    background: rgba(255, 176, 0, 0.03);
+/* Merch section header */
+.merch-section-header {
+    margin-bottom: 1.5rem;
 }
 
-.release-card[data-type="MERCH"]:hover {
-    border-color: var(--amber);
-    background: rgba(255, 176, 0, 0.1);
-    box-shadow: 0 0 15px rgba(255, 176, 0, 0.3);
-}
-
-.release-card[data-type="MERCH"].active {
-    border-color: var(--amber);
-    background: rgba(255, 176, 0, 0.12);
-    box-shadow: 0 0 20px rgba(255, 176, 0, 0.4);
-}
-
-.release-card[data-type="MERCH"] .release-type {
+.merch-title {
+    font-size: 1.4rem;
+    font-weight: normal;
     color: var(--amber);
+    text-shadow: 0 0 15px rgba(255, 176, 0, 0.4);
+    margin-bottom: 0.25rem;
 }
 
-.release-card[data-type="MERCH"] .release-name {
+.merch-subtitle {
+    font-size: 0.75rem;
+    color: var(--green-dim);
+    letter-spacing: 0.15em;
+}
+
+/* Merch showcase - two product cards side by side */
+.merch-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.merch-product-card {
+    border: 1px solid var(--amber);
+    background: rgba(255, 176, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.merch-product-card:hover {
+    border-color: var(--amber);
+    background: rgba(255, 176, 0, 0.08);
+    box-shadow: 0 0 20px rgba(255, 176, 0, 0.3);
+}
+
+.merch-product-image {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.merch-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) brightness(0.9);
+    transition: all 0.3s ease;
+}
+
+.merch-product-card:hover .merch-product-image img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.02);
+}
+
+.merch-variant-tag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    background: rgba(5, 5, 5, 0.9);
+    font-size: 0.75rem;
+    color: var(--amber);
+    text-align: center;
+    letter-spacing: 0.15em;
+    border-top: 1px solid var(--amber);
+}
+
+/* Merch details info grid */
+.merch-details {
+    margin-bottom: 1.5rem;
+}
+
+.merch-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.merch-info-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem;
+    border: 1px solid var(--green-dark);
+    background: rgba(0, 255, 65, 0.02);
+}
+
+.merch-info-label {
+    font-size: 0.65rem;
+    color: var(--green-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+}
+
+.merch-info-value {
+    font-size: 0.85rem;
+    color: var(--green);
+}
+
+.merch-info-value.merch-price {
+    color: var(--amber);
+    font-size: 1rem;
     text-shadow: 0 0 8px rgba(255, 176, 0, 0.4);
+}
+
+.merch-info-value.merch-available {
+    color: var(--green);
+}
+
+/* Merch order CTA */
+.merch-order-cta {
+    margin-top: 1rem;
+}
+
+.merch-order-btn {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 2px solid var(--amber);
+    background: rgba(255, 176, 0, 0.1);
+    color: var(--amber);
+    font-family: var(--font-terminal);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.merch-order-btn:hover {
+    background: var(--amber);
+    color: var(--bg);
+    box-shadow: 0 0 20px rgba(255, 176, 0, 0.5);
 }
 
 /* Merch image grid in detail panel */
@@ -2062,7 +2176,17 @@ body {
         padding-bottom: 4rem; /* Space for audio toggle */
     }
 
-    /* Merch grid responsive */
+    /* Merch section responsive */
+    .merch-showcase {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .merch-info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Merch grid responsive (detail panel) */
     .merch-image-grid {
         grid-template-columns: 1fr;
         gap: 0.5rem;

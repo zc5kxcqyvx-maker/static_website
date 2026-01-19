@@ -1174,6 +1174,7 @@ function initDetailPanel() {
     releaseCards.forEach(card => {
         card.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             openDetailPanel(card);
         });
 
@@ -1181,6 +1182,7 @@ function initDetailPanel() {
         card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
+                e.stopPropagation();
                 openDetailPanel(card);
             }
         });
@@ -1190,6 +1192,7 @@ function initDetailPanel() {
     merchCards.forEach(card => {
         card.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             openMerchCardDetail(card, detailPanel, detailContent);
         });
 
@@ -1197,6 +1200,7 @@ function initDetailPanel() {
         card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
+                e.stopPropagation();
                 openMerchCardDetail(card, detailPanel, detailContent);
             }
         });

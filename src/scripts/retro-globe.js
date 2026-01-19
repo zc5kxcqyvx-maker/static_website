@@ -1325,51 +1325,14 @@ function closeDetailPanel() {
 // =====================================================
 
 function openMerchCardDetail(card, detailPanel, detailContent) {
-    // Get merch data from card
-    const title = card.dataset.title;
-    const variant = card.dataset.variant;
-    const image = card.dataset.image;
-    const price = card.dataset.price || '30 EUR';
-    const material = card.dataset.material || '100% Baumwolle';
-    const availability = card.dataset.availability || 'AVAILABLE';
-    const contact = card.dataset.contact || 'stayrealsick@gmail.com';
-
-    // Determine availability status class
-    const availabilityClass = availability === 'AVAILABLE' ? 'status-available' : 'status-limited';
-
-    // Build content
+    // Load merch.html in an iframe
     detailContent.innerHTML = `
-        <div class="detail-artwork">
-            <img src="${image}" alt="${title} - ${variant}">
-            <div class="artwork-scanline"></div>
-        </div>
-        <div class="detail-header">
-            <div class="detail-type" style="color: var(--amber);">[T-SHIRT]</div>
-            <h2 class="detail-title" style="color: var(--amber); text-shadow: 0 0 10px rgba(255, 176, 0, 0.4);">> ${title}</h2>
-            <div class="detail-meta">${variant} | 2025</div>
-        </div>
-        <div class="merch-info">
-            <div class="merch-info-row">
-                <span class="merch-info-label">PREIS:</span>
-                <span class="merch-info-value price">${price}</span>
-            </div>
-            <div class="merch-info-row">
-                <span class="merch-info-label">STATUS:</span>
-                <span class="merch-info-value ${availabilityClass}">${availability}</span>
-            </div>
-            <div class="merch-info-row">
-                <span class="merch-info-label">VARIANTE:</span>
-                <span class="merch-info-value">${variant}</span>
-            </div>
-            <div class="merch-info-row">
-                <span class="merch-info-label">MATERIAL:</span>
-                <span class="merch-info-value">${material}</span>
-            </div>
-        </div>
-        <div class="merch-cta">
-            <div class="merch-cta-title">[BESTELLEN]</div>
-            <a href="mailto:${contact}?subject=TECHNO PFLICHT T-Shirt Bestellung (${variant})&body=Hallo,%0A%0Aich möchte ein TECHNO PFLICHT T-Shirt bestellen.%0A%0AVariante: ${variant}%0AGröße: S / M / L / XL%0A%0ADanke!" class="merch-cta-btn primary">[KONTAKT / BESTELLUNG]</a>
-        </div>
+        <iframe
+            src="merch.html"
+            class="merch-iframe"
+            frameborder="0"
+            title="STASIC Merch"
+        ></iframe>
     `;
 
     // Add merch panel styling

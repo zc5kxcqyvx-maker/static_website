@@ -287,6 +287,49 @@
                 width: 100px;
             }
         }
+
+        /* Embedded mode (when loaded in iframe) */
+        body.embedded {
+            padding: 1rem;
+        }
+
+        body.embedded .container {
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            max-width: 100%;
+        }
+
+        body.embedded .back-link,
+        body.embedded .footer,
+        body.embedded .scanlines {
+            display: none;
+        }
+
+        body.embedded .header {
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+        }
+
+        body.embedded .header h1 {
+            font-size: 1.2rem;
+        }
+
+        body.embedded .product-grid {
+            margin-bottom: 1rem;
+        }
+
+        body.embedded .info-block {
+            margin-bottom: 1rem;
+        }
+
+        body.embedded .description {
+            margin-bottom: 1rem;
+        }
+
+        body.embedded .cta-section {
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -348,5 +391,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Detect if page is loaded in an iframe
+        if (window.self !== window.top) {
+            document.body.classList.add('embedded');
+        }
+    </script>
 </body>
 </html>

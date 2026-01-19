@@ -1188,20 +1188,18 @@ function initDetailPanel() {
         });
     });
 
-    // Click on merch card to open detail
+    // Click on merch card to open merch page in new tab
     merchCards.forEach(card => {
         card.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation();
-            openMerchCardDetail(card, detailPanel, detailContent);
+            window.open('merch.html', '_blank');
         });
 
         // Keyboard support: Enter/Space to activate
         card.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                e.stopPropagation();
-                openMerchCardDetail(card, detailPanel, detailContent);
+                window.open('merch.html', '_blank');
             }
         });
     });

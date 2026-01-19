@@ -1218,7 +1218,8 @@ function initDetailPanel() {
     document.addEventListener('click', (e) => {
         if (detailPanel.classList.contains('active') &&
             !detailPanel.contains(e.target) &&
-            !e.target.closest('.release-card')) {
+            !e.target.closest('.release-card') &&
+            !e.target.closest('.merch-card')) {
             closeDetailPanel();
         }
     });

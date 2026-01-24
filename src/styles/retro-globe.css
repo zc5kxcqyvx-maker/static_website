@@ -14,6 +14,9 @@
     --green-dark: #003d10;
     --amber: #ffb000;
     --red: #ff0040;
+    --purple: #bf00ff;
+    --purple-dim: #8a00b8;
+    --purple-glow: rgba(191, 0, 255, 0.3);
 
     /* === Typography === */
     --font-terminal: 'VT323', monospace;
@@ -539,13 +542,16 @@ body {
 
 .mixes-panel {
     position: fixed;
-    bottom: 80px;
-    left: 100px;
-    width: 260px;
-    max-height: 280px;
+    top: 50%;
+    left: 120px;
+    transform: translateY(-50%);
+    width: 300px;
+    max-height: 350px;
     background: rgba(5, 5, 5, 0.98);
-    border: 1px solid var(--green-dim);
-    box-shadow: 0 0 10px var(--green-glow);
+    border: 2px solid var(--purple);
+    box-shadow:
+        0 0 15px var(--purple-glow),
+        inset 0 0 30px rgba(191, 0, 255, 0.03);
     z-index: 200;
     display: flex;
     flex-direction: column;
@@ -558,12 +564,12 @@ body {
 }
 
 .mixes-header {
-    padding: 8px 12px;
-    border-bottom: 1px solid var(--green-dim);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--purple-dim);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 255, 65, 0.03);
+    background: rgba(191, 0, 255, 0.05);
 }
 
 .mixes-title-row {
@@ -572,19 +578,29 @@ body {
     gap: 8px;
 }
 
+.mixes-title-row .terminal-prompt {
+    color: var(--purple);
+    animation: blink 1s step-end infinite;
+}
+
 .mixes-title {
     font-family: var(--font-terminal);
-    font-size: 0.9rem;
-    color: var(--green);
-    text-shadow: 0 0 8px var(--green-glow);
+    font-size: 1rem;
+    color: var(--purple);
+    text-shadow: 0 0 10px var(--purple-glow);
 }
 
 .mixes-status {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.7rem;
-    color: var(--green-dim);
+    font-size: 0.65rem;
+    color: var(--purple-dim);
+}
+
+.mixes-status .status-dot {
+    background: var(--purple);
+    box-shadow: 0 0 8px var(--purple);
 }
 
 .mixes-content {
@@ -594,10 +610,10 @@ body {
 }
 
 .mix-item {
-    padding: 10px;
-    border: 1px solid var(--green-dim);
+    padding: 12px;
+    border: 1px solid var(--purple-dim);
     margin-bottom: 10px;
-    background: rgba(0, 255, 65, 0.02);
+    background: rgba(191, 0, 255, 0.03);
 }
 
 .mix-header {
@@ -609,45 +625,45 @@ body {
 }
 
 .mix-type {
-    color: var(--amber);
+    color: var(--purple);
 }
 
 .mix-name {
     font-family: var(--font-terminal);
-    font-size: 0.85rem;
-    color: var(--green);
-    margin: 0 0 5px 0;
+    font-size: 0.9rem;
+    color: var(--purple);
+    margin: 0 0 6px 0;
+    text-shadow: 0 0 8px var(--purple-glow);
 }
 
 .mix-meta {
     display: flex;
     gap: 10px;
     font-size: 0.65rem;
-    color: var(--green-dim);
-    margin-bottom: 8px;
+    color: var(--purple-dim);
+    margin-bottom: 10px;
 }
 
 .mix-player {
-    border: 1px solid var(--green-dim);
+    border: 1px solid var(--purple-dim);
     background: var(--terminal-bg);
     overflow: hidden;
     width: 100%;
-    max-width: 238px;
 }
 
 .mix-player iframe {
     display: block;
-    width: 238px !important;
-    max-width: 238px !important;
-    height: 100px !important;
+    width: 100% !important;
+    height: 80px !important;
 }
 
 .mixes-footer {
-    padding: 6px;
+    padding: 8px;
     text-align: center;
     font-size: 0.6rem;
-    color: var(--green-dim);
-    border-top: 1px solid var(--green-dark);
+    color: var(--purple-dim);
+    border-top: 1px solid var(--purple-dim);
+    background: rgba(191, 0, 255, 0.03);
 }
 
 /* =====================================================
@@ -1143,20 +1159,20 @@ body {
 .live-status-indicator {
     width: 10px;
     height: 10px;
-    background: var(--amber);
+    background: var(--purple);
     border-radius: 50%;
-    animation: statusPulse 2s ease-in-out infinite;
-    box-shadow: 0 0 10px var(--amber);
+    animation: statusPulsePurple 2s ease-in-out infinite;
+    box-shadow: 0 0 10px var(--purple);
 }
 
-@keyframes statusPulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--amber); }
-    50% { opacity: 0.5; box-shadow: 0 0 5px var(--amber); }
+@keyframes statusPulsePurple {
+    0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--purple); }
+    50% { opacity: 0.5; box-shadow: 0 0 5px var(--purple); }
 }
 
 .live-status-text {
     letter-spacing: 0.15em;
-    color: var(--amber);
+    color: var(--purple);
 }
 
 .shows-list {
@@ -2121,7 +2137,7 @@ body {
     }
 
     .mixes-panel {
-        width: 260px;
+        width: 280px;
         left: 100px;
     }
 }
@@ -2138,9 +2154,8 @@ body {
     }
 
     .mixes-panel {
-        width: 240px;
-        left: 90px;
-        bottom: 90px;
+        width: 260px;
+        left: 95px;
     }
 }
 

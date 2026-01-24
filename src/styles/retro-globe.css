@@ -539,20 +539,22 @@ body {
 
 .mixes-panel {
     position: fixed;
-    bottom: 100px;
-    left: 120px;
-    width: 280px;
-    max-height: 320px;
+    bottom: 80px;
+    left: 100px;
+    width: 260px;
+    max-height: 280px;
     background: rgba(5, 5, 5, 0.98);
     border: 1px solid var(--green-dim);
-    box-shadow:
-        0 0 10px var(--green-glow),
-        inset 0 0 30px rgba(0, 255, 65, 0.02);
+    box-shadow: 0 0 10px var(--green-glow);
     z-index: 200;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    isolation: isolate;
+}
+
+.mixes-panel * {
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .mixes-header {
@@ -629,13 +631,15 @@ body {
     border: 1px solid var(--green-dim);
     background: var(--terminal-bg);
     overflow: hidden;
-    max-width: 100%;
+    width: 100%;
+    max-width: 238px;
 }
 
 .mix-player iframe {
     display: block;
-    max-width: 100%;
-    width: 100% !important;
+    width: 238px !important;
+    max-width: 238px !important;
+    height: 100px !important;
 }
 
 .mixes-footer {
@@ -651,7 +655,13 @@ body {
    ===================================================== */
 
 .section-mixes-mobile {
-    display: none;
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .section-mixes-mobile {
+        display: block !important;
+    }
 }
 
 .mix-mobile-item {

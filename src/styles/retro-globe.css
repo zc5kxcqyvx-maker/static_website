@@ -545,8 +545,8 @@ body {
     top: 50%;
     left: 130px;
     transform: translateY(-50%);
-    width: 320px;
-    height: 300px;
+    width: 380px;
+    height: 340px;
     z-index: 200;
     contain: strict;
 }
@@ -648,23 +648,23 @@ body {
 
 .mix-player-wrapper {
     width: 100%;
-    max-width: 280px;
-    height: 80px;
+    max-width: 340px;
+    height: 100px;
     overflow: hidden;
     contain: strict;
 }
 
 .mix-player {
-    width: 280px;
-    height: 80px;
+    width: 340px;
+    height: 100px;
     border: 1px solid var(--purple-dim);
     background: var(--terminal-bg);
     overflow: hidden;
 }
 
 .mix-player iframe {
-    width: 280px;
-    height: 80px;
+    width: 340px;
+    height: 100px;
     border: none;
     display: block;
 }
@@ -1199,14 +1199,14 @@ body {
     align-items: center;
     gap: 1rem;
     padding: 0.75rem 1rem;
-    border: 1px solid var(--green-dark);
-    background: rgba(0, 255, 65, 0.02);
+    border: 1px solid var(--purple-dim);
+    background: rgba(191, 0, 255, 0.02);
     transition: all 0.3s ease;
 }
 
 .show-item:hover {
-    border-color: var(--green-dim);
-    background: rgba(0, 255, 65, 0.05);
+    border-color: var(--purple);
+    background: rgba(191, 0, 255, 0.05);
 }
 
 .show-item.no-shows {
@@ -1219,12 +1219,13 @@ body {
 
 .no-shows-text {
     font-size: 0.8rem;
-    color: var(--green-dim);
+    color: var(--purple-dim);
 }
 
 .no-shows-sub {
     font-size: 0.7rem;
-    color: var(--green-dark);
+    color: var(--purple-dim);
+    opacity: 0.6;
     animation: blink 2s step-end infinite;
 }
 
@@ -1234,18 +1235,18 @@ body {
     align-items: center;
     min-width: 50px;
     padding-right: 1rem;
-    border-right: 1px solid var(--green-dark);
+    border-right: 1px solid var(--purple-dim);
 }
 
 .show-day {
     font-size: 1.2rem;
-    color: var(--green);
-    text-shadow: 0 0 8px var(--green-glow);
+    color: var(--purple);
+    text-shadow: 0 0 8px var(--purple-glow);
 }
 
 .show-month {
     font-size: 0.6rem;
-    color: var(--green-dim);
+    color: var(--purple-dim);
     letter-spacing: 0.1em;
 }
 
@@ -1258,18 +1259,18 @@ body {
 
 .show-venue {
     font-size: 0.85rem;
-    color: var(--green);
+    color: var(--purple);
 }
 
 .show-location {
     font-size: 0.65rem;
-    color: var(--green-dim);
+    color: var(--purple-dim);
     letter-spacing: 0.1em;
 }
 
 .show-status {
     font-size: 0.65rem;
-    color: var(--amber);
+    color: var(--purple);
     letter-spacing: 0.05em;
 }
 
@@ -1278,18 +1279,18 @@ body {
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
-    border: 1px solid var(--green-dark);
-    background: rgba(0, 255, 65, 0.03);
+    border: 1px solid var(--purple-dim);
+    background: rgba(191, 0, 255, 0.03);
 }
 
 .booking-label {
     font-size: 0.7rem;
-    color: var(--green-dim);
+    color: var(--purple-dim);
     letter-spacing: 0.1em;
 }
 
 .booking-link {
-    color: var(--green);
+    color: var(--purple);
     font-size: 0.9rem;
     text-decoration: none;
     letter-spacing: 0.05em;
@@ -1297,7 +1298,7 @@ body {
 }
 
 .booking-link:hover {
-    text-shadow: 0 0 10px var(--green-glow);
+    text-shadow: 0 0 10px var(--purple-glow);
 }
 
 /* =====================================================

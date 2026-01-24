@@ -547,16 +547,22 @@ body {
     transform: translateY(-50%);
     width: 320px;
     height: 300px;
+    z-index: 200;
+    contain: strict;
+}
+
+.mixes-panel-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(5, 5, 5, 0.98);
     border: 2px solid var(--purple);
-    box-shadow:
-        0 0 20px var(--purple-glow),
-        inset 0 0 30px rgba(191, 0, 255, 0.03);
-    z-index: 200;
+    box-shadow: 0 0 20px var(--purple-glow);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    clip-path: inset(0);
 }
 
 .mixes-header {
@@ -640,22 +646,27 @@ body {
     margin-bottom: 10px;
 }
 
+.mix-player-wrapper {
+    width: 100%;
+    max-width: 280px;
+    height: 80px;
+    overflow: hidden;
+    contain: strict;
+}
+
 .mix-player {
+    width: 280px;
+    height: 80px;
     border: 1px solid var(--purple-dim);
     background: var(--terminal-bg);
     overflow: hidden;
-    width: 100%;
-    height: 80px;
-    position: relative;
 }
 
 .mix-player iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 80px !important;
+    width: 280px;
+    height: 80px;
     border: none;
+    display: block;
 }
 
 .mixes-footer {

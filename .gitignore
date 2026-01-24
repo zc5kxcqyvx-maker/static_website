@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+*.DS_Store
+
+# Environment & Secrets
+.env
+.env.*
+*.local.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp
+*.tmp
+*.temp
+.cache/

@@ -99,6 +99,50 @@
     <div class="flicker"></div>
     <div class="sync-line"></div>
 
+    <!-- Mixes Panel (Links) - Desktop only -->
+    <div class="mixes-panel" id="mixesPanel">
+        <div class="mixes-header">
+            <div class="mixes-title-row">
+                <span class="terminal-prompt">></span>
+                <span class="mixes-title">MIXES_</span>
+            </div>
+            <div class="mixes-status">
+                <span class="status-dot"></span>
+                <span>STREAMING</span>
+            </div>
+        </div>
+
+        <div class="mixes-content">
+            <!-- Sunset Civilisation Mix -->
+            <div class="mix-item active" data-mix="sunset-civilisation">
+                <div class="mix-header">
+                    <span class="mix-type">[HOUSE]</span>
+                    <span class="mix-year">2026</span>
+                </div>
+                <h3 class="mix-name">> SUNSET CIVILISATION</h3>
+                <div class="mix-meta">
+                    <span class="mix-duration">91:00</span>
+                    <span class="mix-tracks">25+ TRACKS</span>
+                </div>
+                <div class="mix-player">
+                    <iframe
+                        width="100%"
+                        height="166"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/stayrealsick/sunset-civilisation-house-mix&color=%2300ff41&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Placeholder für weitere Mixes -->
+            <div class="mixes-footer">
+                <span class="mixes-count">[1 MIX AVAILABLE]</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Connection Lines SVG Overlay -->
     <svg id="connectionLines" class="connection-lines"></svg>
 
@@ -288,36 +332,34 @@
                         </div>
                     </div>
 
-                    <!-- Sunset Civilisation House Mix -->
-                    <div class="release-card"
-                         tabindex="0"
-                         role="button"
-                         aria-label="Sunset Civilisation House Mix anzeigen"
-                         data-release="sunset-civilisation"
-                         data-title="SUNSET CIVILISATION"
-                         data-type="MIX"
-                         data-year="2026"
-                         data-tracks="25+"
-                         data-duration="91:00"
-                         data-artwork="https://i1.sndcdn.com/artworks-GQyUW1laIoJIGfaL-vi98fA-t500x500.jpg"
-                         data-links='[{"name":"SOUNDCLOUD","url":"https://soundcloud.com/stayrealsick/sunset-civilisation-house-mix"}]'
-                         data-tracklist='[{"num":"—","title":"House warming house set housing bangers for your weekend warm-up","time":"91:00"}]'>
-                        <div class="release-artwork">
-                            <img src="https://i1.sndcdn.com/artworks-GQyUW1laIoJIGfaL-vi98fA-t500x500.jpg" alt="Sunset Civilisation House Mix" loading="lazy">
-                            <div class="artwork-scanline"></div>
-                        </div>
-                        <div class="release-info">
-                            <span class="release-type">[MIX]</span>
-                            <h3 class="release-name">> SUNSET CIVILISATION</h3>
-                            <span class="release-year">2026</span>
-                        </div>
-                    </div>
+                </div>
+            </section>
 
+            <!-- Section: Mixes (Mobile only, zwischen Releases und Live) -->
+            <section class="section section-mixes-mobile" data-section="2">
+                <div class="section-marker">[MIXES]</div>
+                <div class="mix-mobile-item">
+                    <div class="mix-mobile-header">
+                        <span class="mix-type">[HOUSE]</span>
+                        <h3 class="mix-name">> SUNSET CIVILISATION</h3>
+                        <span class="mix-meta">2026 | 91:00 | 25+ TRACKS</span>
+                    </div>
+                    <div class="mix-mobile-player">
+                        <iframe
+                            width="100%"
+                            height="166"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/stayrealsick/sunset-civilisation-house-mix&color=%2300ff41&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+                        </iframe>
+                    </div>
+                    <p class="mix-description">> House warming house set housing bangers for your weekend warm-up</p>
                 </div>
             </section>
 
             <!-- Section: Live -->
-            <section class="section" data-section="2">
+            <section class="section" data-section="3">
                 <div class="section-marker">[LIVE]</div>
                 <div class="live-header">
                     <span class="live-status-indicator"></span>
@@ -347,7 +389,7 @@
             </section>
 
             <!-- Section: Merch -->
-            <section class="section" data-section="3">
+            <section class="section" data-section="4">
                 <div class="section-marker">[MERCH]</div>
 
                 <div class="merch-grid">
@@ -402,7 +444,7 @@
             </section>
 
             <!-- Section: About -->
-            <section class="section" data-section="4">
+            <section class="section" data-section="5">
                 <div class="section-marker">[ABOUT]</div>
                 <div class="about-block">
                     <div class="data-line">
@@ -423,7 +465,7 @@
                     </div>
                     <div class="data-line">
                         <span class="data-label">RELEASES:</span>
-                        <span class="data-value">7 PROJECTS | 21 TRACKS + MIXES</span>
+                        <span class="data-value">6 PROJECTS | 21 TRACKS</span>
                     </div>
                 </div>
                 <div class="about-text">
@@ -432,7 +474,7 @@
             </section>
 
             <!-- Section: Connect -->
-            <section class="section" data-section="5">
+            <section class="section" data-section="6">
                 <div class="section-marker">[CONNECT]</div>
                 <p class="connect-intro">> Platform nodes active. Hover to highlight connection.</p>
                 <div class="links-grid">
@@ -497,10 +539,11 @@
         <div class="progress-sections">
             <span data-target="0">INIT</span>
             <span data-target="1">RELS</span>
-            <span data-target="2">LIVE</span>
-            <span data-target="3">MRCH</span>
-            <span data-target="4">INFO</span>
-            <span data-target="5">LINK</span>
+            <span data-target="2">MIX</span>
+            <span data-target="3">LIVE</span>
+            <span data-target="4">MRCH</span>
+            <span data-target="5">INFO</span>
+            <span data-target="6">LINK</span>
         </div>
     </div>
 

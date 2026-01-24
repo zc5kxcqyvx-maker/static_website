@@ -534,6 +534,155 @@ body {
 }
 
 /* =====================================================
+   MIXES PANEL (Desktop - Links)
+   ===================================================== */
+
+.mixes-panel {
+    position: fixed;
+    top: 5vh;
+    left: 3vw;
+    width: 320px;
+    height: 90vh;
+    background: rgba(5, 5, 5, 0.95);
+    border: 2px solid var(--green-dim);
+    box-shadow:
+        0 0 12px var(--green-glow),
+        inset 0 0 60px rgba(0, 255, 65, 0.03);
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mixes-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--green-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mixes-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mixes-title {
+    font-family: var(--font-terminal);
+    font-size: 1.3rem;
+    color: var(--green);
+    text-shadow: 0 0 10px var(--green-glow);
+}
+
+.mixes-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    color: var(--green-dim);
+}
+
+.mixes-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.mix-item {
+    padding: 15px;
+    border: 1px solid var(--green-dim);
+    margin-bottom: 15px;
+    background: rgba(0, 255, 65, 0.02);
+}
+
+.mix-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--green-dim);
+    margin-bottom: 5px;
+}
+
+.mix-type {
+    color: var(--amber);
+}
+
+.mix-name {
+    font-family: var(--font-terminal);
+    font-size: 1.1rem;
+    color: var(--green);
+    margin: 0 0 8px 0;
+}
+
+.mix-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.75rem;
+    color: var(--green-dim);
+    margin-bottom: 12px;
+}
+
+.mix-player {
+    border: 1px solid var(--green-dim);
+    background: var(--terminal-bg);
+}
+
+.mix-player iframe {
+    display: block;
+}
+
+.mixes-footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--green-dim);
+}
+
+/* =====================================================
+   MIXES SEKTION (Mobile only)
+   ===================================================== */
+
+.section-mixes-mobile {
+    display: none;
+}
+
+.mix-mobile-item {
+    padding: 20px;
+    border: 1px solid var(--green-dim);
+    background: rgba(0, 255, 65, 0.02);
+}
+
+.mix-mobile-header {
+    margin-bottom: 15px;
+}
+
+.mix-mobile-header .mix-type {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.mix-mobile-header .mix-name {
+    margin-bottom: 5px;
+}
+
+.mix-mobile-header .mix-meta {
+    display: block;
+    margin-bottom: 0;
+}
+
+.mix-mobile-player {
+    border: 1px solid var(--green-dim);
+    margin-bottom: 15px;
+}
+
+.mix-description {
+    font-size: 0.85rem;
+    color: var(--green-dim);
+    font-style: italic;
+}
+
+/* =====================================================
    DETAIL PANEL (LEFT SIDE)
    ===================================================== */
 
@@ -1953,6 +2102,10 @@ body {
         width: 400px;
         max-width: 38vw;
     }
+
+    .mixes-panel {
+        width: 280px;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -1964,6 +2117,11 @@ body {
     .detail-panel {
         width: 360px;
         max-width: 35vw;
+    }
+
+    .mixes-panel {
+        width: 260px;
+        left: 2vw;
     }
 }
 
@@ -1987,6 +2145,15 @@ body {
 
     .section[data-section="0"] {
         min-height: 40vh;
+    }
+
+    /* Hide desktop mixes panel, show mobile section */
+    .mixes-panel {
+        display: none;
+    }
+
+    .section-mixes-mobile {
+        display: block;
     }
 
     .content-panel {

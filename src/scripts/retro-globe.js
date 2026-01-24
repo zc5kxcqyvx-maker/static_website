@@ -486,7 +486,7 @@ function updatePlatformLabels() {
         const isHovered = hoveredPlatform === marker.platform.name;
         const isVisible = dotProduct < 0.2;
 
-        if (isHovered || (isVisible && activeSection === 3)) {
+        if (isHovered || (isVisible && activeSection === 6)) {
             // Show if hovered or visible and on Connect section
             label.style.opacity = isHovered ? '1' : '0.6';
             label.style.left = (x + 15) + 'px';
@@ -837,7 +837,7 @@ function updateMarkerVisibility() {
         const children = marker.group.children;
 
         children.forEach(child => {
-            if (activeSection === 4) {
+            if (activeSection === 6) {
                 // On Connect section - show markers prominently
                 child.material.opacity = child.name === 'ring' ? 0.8 : 1;
             } else {

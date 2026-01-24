@@ -548,10 +548,8 @@ body {
     width: calc(100vw - 800px);
     min-width: 320px;
     max-width: 450px;
-    height: auto;
-    max-height: 80vh;
+    height: 380px;
     z-index: 200;
-    contain: layout;
 }
 
 .mixes-panel-inner {
@@ -566,6 +564,20 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+}
+
+.mixes-content {
+    flex: 1;
+    overflow: hidden;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mix-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .mixes-header {
@@ -608,16 +620,9 @@ body {
     box-shadow: 0 0 8px var(--purple);
 }
 
-.mixes-content {
-    flex: 1;
-    overflow: hidden;
-    padding: 12px;
-}
-
 .mix-item {
     padding: 12px;
     border: 1px solid var(--purple-dim);
-    margin-bottom: 10px;
     background: rgba(191, 0, 255, 0.03);
 }
 
@@ -651,13 +656,14 @@ body {
 
 .mix-player-wrapper {
     width: 100%;
-    height: 120px;
+    min-height: 140px;
+    flex: 1;
     overflow: hidden;
 }
 
 .mix-player {
     width: 100%;
-    height: 120px;
+    height: 140px;
     border: 1px solid var(--purple-dim);
     background: var(--terminal-bg);
     overflow: hidden;
@@ -665,7 +671,7 @@ body {
 
 .mix-player iframe {
     width: 100%;
-    height: 120px;
+    height: 140px;
     border: none;
     display: block;
 }

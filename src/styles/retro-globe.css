@@ -539,15 +539,15 @@ body {
 
 .mixes-panel {
     position: fixed;
-    top: 5vh;
-    left: 3vw;
-    width: 320px;
-    height: 90vh;
-    background: rgba(5, 5, 5, 0.95);
-    border: 2px solid var(--green-dim);
+    bottom: 100px;
+    left: 120px;
+    width: 280px;
+    max-height: 320px;
+    background: rgba(5, 5, 5, 0.97);
+    border: 1px solid var(--green-dim);
     box-shadow:
-        0 0 12px var(--green-glow),
-        inset 0 0 60px rgba(0, 255, 65, 0.03);
+        0 0 10px var(--green-glow),
+        inset 0 0 30px rgba(0, 255, 65, 0.02);
     z-index: 15;
     display: flex;
     flex-direction: column;
@@ -555,11 +555,12 @@ body {
 }
 
 .mixes-header {
-    padding: 15px 20px;
+    padding: 8px 12px;
     border-bottom: 1px solid var(--green-dim);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgba(0, 255, 65, 0.03);
 }
 
 .mixes-title-row {
@@ -570,9 +571,9 @@ body {
 
 .mixes-title {
     font-family: var(--font-terminal);
-    font-size: 1.3rem;
+    font-size: 0.9rem;
     color: var(--green);
-    text-shadow: 0 0 10px var(--green-glow);
+    text-shadow: 0 0 8px var(--green-glow);
 }
 
 .mixes-status {
@@ -586,22 +587,22 @@ body {
 .mixes-content {
     flex: 1;
     overflow-y: auto;
-    padding: 15px;
+    padding: 10px;
 }
 
 .mix-item {
-    padding: 15px;
+    padding: 10px;
     border: 1px solid var(--green-dim);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     background: rgba(0, 255, 65, 0.02);
 }
 
 .mix-header {
     display: flex;
     justify-content: space-between;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     color: var(--green-dim);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 .mix-type {
@@ -610,17 +611,17 @@ body {
 
 .mix-name {
     font-family: var(--font-terminal);
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     color: var(--green);
-    margin: 0 0 8px 0;
+    margin: 0 0 5px 0;
 }
 
 .mix-meta {
     display: flex;
-    gap: 15px;
-    font-size: 0.75rem;
+    gap: 10px;
+    font-size: 0.65rem;
     color: var(--green-dim);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .mix-player {
@@ -633,10 +634,11 @@ body {
 }
 
 .mixes-footer {
-    padding: 10px;
+    padding: 6px;
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     color: var(--green-dim);
+    border-top: 1px solid var(--green-dark);
 }
 
 /* =====================================================
@@ -2104,7 +2106,8 @@ body {
     }
 
     .mixes-panel {
-        width: 280px;
+        width: 260px;
+        left: 100px;
     }
 }
 
@@ -2120,8 +2123,9 @@ body {
     }
 
     .mixes-panel {
-        width: 260px;
-        left: 2vw;
+        width: 240px;
+        left: 90px;
+        bottom: 90px;
     }
 }
 

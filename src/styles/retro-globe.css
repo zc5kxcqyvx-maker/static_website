@@ -545,10 +545,13 @@ body {
     top: 50%;
     left: 130px;
     transform: translateY(-50%);
-    width: 380px;
-    height: 340px;
+    width: calc(100vw - 800px);
+    min-width: 320px;
+    max-width: 450px;
+    height: auto;
+    max-height: 80vh;
     z-index: 200;
-    contain: strict;
+    contain: layout;
 }
 
 .mixes-panel-inner {
@@ -648,23 +651,21 @@ body {
 
 .mix-player-wrapper {
     width: 100%;
-    max-width: 340px;
-    height: 100px;
+    height: 120px;
     overflow: hidden;
-    contain: strict;
 }
 
 .mix-player {
-    width: 340px;
-    height: 100px;
+    width: 100%;
+    height: 120px;
     border: 1px solid var(--purple-dim);
     background: var(--terminal-bg);
     overflow: hidden;
 }
 
 .mix-player iframe {
-    width: 340px;
-    height: 100px;
+    width: 100%;
+    height: 120px;
     border: none;
     display: block;
 }
@@ -1298,6 +1299,17 @@ body {
 }
 
 .booking-link:hover {
+    text-shadow: 0 0 10px var(--purple-glow);
+}
+
+/* Live Section - Force Purple Theme */
+section[data-section="3"] .section-marker {
+    color: var(--purple);
+}
+
+section[data-section="3"] .live-status-text,
+section[data-section="3"] h2 {
+    color: var(--purple);
     text-shadow: 0 0 10px var(--purple-glow);
 }
 
@@ -2150,7 +2162,8 @@ body {
     }
 
     .mixes-panel {
-        width: 280px;
+        min-width: 300px;
+        max-width: 380px;
         left: 100px;
     }
 }
@@ -2167,7 +2180,8 @@ body {
     }
 
     .mixes-panel {
-        width: 260px;
+        min-width: 280px;
+        max-width: 340px;
         left: 95px;
     }
 }

@@ -625,6 +625,7 @@ body {
     padding: 12px;
     border: 1px solid var(--purple-dim);
     background: rgba(191, 0, 255, 0.03);
+    flex-shrink: 0;
 }
 
 .mix-header {

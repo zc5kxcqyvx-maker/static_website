@@ -1066,6 +1066,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('%c STASIC TERMINAL v2.5 ', 'background: #00ff41; color: #0a0a0a; font-family: monospace;');
         console.log('%c Connection established... ', 'color: #00ff41; font-family: monospace;');
 
+        // Initialize mixes accordion
+        initMixesAccordion();
+
         // Initialize audio player
         initAudioPlayer();
 
@@ -1155,6 +1158,24 @@ function navigateSection(direction) {
         const targetSection = sections[newIndex];
         targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+}
+
+// =====================================================
+// MIXES ACCORDION (Desktop Panel)
+// =====================================================
+
+function initMixesAccordion() {
+    const mixItems = document.querySelectorAll('.mixes-panel .mix-item');
+    mixItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            // Don't toggle if clicking inside the iframe
+            if (e.target.closest('iframe')) return;
+
+            const wasActive = item.classList.contains('active');
+            mixItems.forEach(i => i.classList.remove('active'));
+            if (!wasActive) item.classList.add('active');
+        });
+    });
 }
 
 // =====================================================

@@ -548,21 +548,17 @@ body {
     width: calc(100vw - 800px);
     min-width: 320px;
     max-width: 450px;
-    height: 380px;
+    max-height: 80vh;
     z-index: 200;
 }
 
 .mixes-panel-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background: rgba(5, 5, 5, 0.98);
     border: 2px solid var(--purple);
     box-shadow: 0 0 20px var(--purple-glow);
     display: flex;
     flex-direction: column;
+    max-height: 80vh;
 }
 
 .mixes-content {

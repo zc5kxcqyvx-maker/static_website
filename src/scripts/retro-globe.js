@@ -426,7 +426,7 @@ function updateReleaseLabels() {
         const isHovered = hoveredRelease === marker.release.name;
         const isVisible = dotProduct < 0.2;
 
-        if (isHovered || (isVisible && activeSection === 1)) {
+        if (isHovered || (isVisible && activeSection === 2)) {
             // Show if hovered or visible and on releases section
             label.style.opacity = isHovered ? '1' : '0.6';
             label.style.left = (x + 15) + 'px';

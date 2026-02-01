@@ -568,14 +568,14 @@ body {
 
 .mixes-content {
     flex: 1;
-    overflow: hidden;
+    overflow-y: auto;
     padding: 15px;
     display: flex;
     flex-direction: column;
+    gap: 12px;
 }
 
 .mix-item {
-    flex: 1;
     display: flex;
     flex-direction: column;
 }
@@ -732,6 +732,24 @@ body {
     font-size: 0.85rem;
     color: var(--green-dim);
     font-style: italic;
+}
+
+.mix-mobile-item + .mix-mobile-item {
+    margin-top: 20px;
+}
+
+/* Dystopian Intro Text (between Sets and Releases) */
+.dystopian-intro {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.about-text-standalone {
+    font-family: var(--font-terminal);
+    font-size: 1.1rem;
+    color: var(--green);
+    text-shadow: 0 0 10px var(--green-glow);
+    letter-spacing: 0.05em;
 }
 
 /* =====================================================

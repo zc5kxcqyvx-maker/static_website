@@ -1099,7 +1099,7 @@ function initPreloader(callback) {
             preloader.remove();
         }, 500);
         callback();
-    }, 4000);
+    }, 2000);
 }
 
 // =====================================================

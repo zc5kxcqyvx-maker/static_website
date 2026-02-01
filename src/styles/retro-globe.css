@@ -130,14 +130,14 @@ body {
     animation: bootFadeIn 0.3s ease forwards;
 }
 
-.boot-line:nth-child(1) { animation-delay: 0.2s; }
-.boot-line:nth-child(2) { animation-delay: 0.5s; }
-.boot-line:nth-child(3) { animation-delay: 1.0s; }
-.boot-line:nth-child(4) { animation-delay: 1.4s; }
-.boot-line:nth-child(5) { animation-delay: 1.8s; }
-.boot-line:nth-child(6) { animation-delay: 2.2s; }
-.boot-line:nth-child(7) { animation-delay: 2.6s; }
-.boot-line:nth-child(8) { animation-delay: 3.2s; }
+.boot-line:nth-child(1) { animation-delay: 0.1s; }
+.boot-line:nth-child(2) { animation-delay: 0.25s; }
+.boot-line:nth-child(3) { animation-delay: 0.5s; }
+.boot-line:nth-child(4) { animation-delay: 0.7s; }
+.boot-line:nth-child(5) { animation-delay: 0.9s; }
+.boot-line:nth-child(6) { animation-delay: 1.1s; }
+.boot-line:nth-child(7) { animation-delay: 1.3s; }
+.boot-line:nth-child(8) { animation-delay: 1.6s; }
 
 @keyframes bootFadeIn {
     from { opacity: 0; transform: translateX(-10px); }
@@ -150,11 +150,11 @@ body {
     animation: statusOk 0.2s ease forwards;
 }
 
-.boot-line:nth-child(3) .status-ok { animation-delay: 1.2s; }
-.boot-line:nth-child(4) .status-ok { animation-delay: 1.6s; }
-.boot-line:nth-child(5) .status-ok { animation-delay: 2.0s; }
-.boot-line:nth-child(6) .status-ok { animation-delay: 2.4s; }
-.boot-line:nth-child(7) .status-ok { animation-delay: 2.8s; }
+.boot-line:nth-child(3) .status-ok { animation-delay: 0.6s; }
+.boot-line:nth-child(4) .status-ok { animation-delay: 0.8s; }
+.boot-line:nth-child(5) .status-ok { animation-delay: 1.0s; }
+.boot-line:nth-child(6) .status-ok { animation-delay: 1.2s; }
+.boot-line:nth-child(7) .status-ok { animation-delay: 1.4s; }
 
 @keyframes statusOk {
     from { opacity: 0; }
@@ -184,7 +184,7 @@ body {
     width: 0%;
     background: var(--green);
     box-shadow: 0 0 10px var(--green);
-    animation: bootProgress 3.5s ease-out forwards;
+    animation: bootProgress 1.7s ease-out forwards;
 }
 
 @keyframes bootProgress {

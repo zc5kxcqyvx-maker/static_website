@@ -462,7 +462,7 @@ body {
 .section {
     min-height: auto;
     padding-bottom: 2rem;
-    opacity: 0.6;
+    opacity: 0.9;
     transition: opacity 0.5s ease;
 }
 

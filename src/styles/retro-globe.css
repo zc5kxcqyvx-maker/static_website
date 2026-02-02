@@ -18,6 +18,17 @@
     --purple-dim: #8a00b8;
     --purple-glow: rgba(191, 0, 255, 0.3);
 
+    --cyan: #00e5ff;
+    --cyan-dim: #0099aa;
+    --cyan-glow: rgba(0, 229, 255, 0.3);
+
+    --amber-dim: #aa7700;
+    --amber-glow: rgba(255, 176, 0, 0.3);
+
+    --rose: #ff0055;
+    --rose-dim: #aa0038;
+    --rose-glow: rgba(255, 0, 85, 0.3);
+
     /* === Typography === */
     --font-terminal: 'VT323', monospace;
     --font-mono: 'Share Tech Mono', monospace;
@@ -554,8 +565,8 @@ body {
 
 .mixes-panel-inner {
     background: rgba(5, 5, 5, 0.98);
-    border: 2px solid var(--purple);
-    box-shadow: 0 0 20px var(--purple-glow);
+    border: 2px solid var(--cyan);
+    box-shadow: 0 0 20px var(--cyan-glow);
     display: flex;
     flex-direction: column;
     max-height: 80vh;
@@ -577,7 +588,7 @@ body {
 }
 
 .mixes-content::-webkit-scrollbar-thumb {
-    background: var(--purple-dim);
+    background: var(--cyan-dim);
 }
 
 .mix-item {
@@ -587,11 +598,11 @@ body {
 
 .mixes-header {
     padding: 10px 15px;
-    border-bottom: 1px solid var(--purple-dim);
+    border-bottom: 1px solid var(--cyan-dim);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(191, 0, 255, 0.05);
+    background: rgba(0, 229, 255, 0.05);
 }
 
 .mixes-title-row {
@@ -601,15 +612,15 @@ body {
 }
 
 .mixes-title-row .terminal-prompt {
-    color: var(--purple);
+    color: var(--cyan);
     animation: blink 1s step-end infinite;
 }
 
 .mixes-title {
     font-family: var(--font-terminal);
     font-size: 1rem;
-    color: var(--purple);
-    text-shadow: 0 0 10px var(--purple-glow);
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan-glow);
 }
 
 .mixes-status {
@@ -617,29 +628,29 @@ body {
     align-items: center;
     gap: 6px;
     font-size: 0.65rem;
-    color: var(--purple-dim);
+    color: var(--cyan-dim);
 }
 
 .mixes-status .status-dot {
-    background: var(--purple);
-    box-shadow: 0 0 8px var(--purple);
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
 }
 
 .mix-item {
     padding: 12px;
-    border: 1px solid var(--purple-dim);
-    background: rgba(191, 0, 255, 0.03);
+    border: 1px solid var(--cyan-dim);
+    background: rgba(0, 229, 255, 0.03);
     cursor: pointer;
     transition: border-color 0.2s ease;
 }
 
 .mix-item:hover {
-    border-color: var(--purple);
+    border-color: var(--cyan);
 }
 
 .mix-item.active {
-    border-color: var(--purple);
-    background: rgba(191, 0, 255, 0.06);
+    border-color: var(--cyan);
+    background: rgba(0, 229, 255, 0.06);
 }
 
 .mix-item + .mix-item {
@@ -655,22 +666,22 @@ body {
 }
 
 .mix-type {
-    color: var(--purple);
+    color: var(--cyan);
 }
 
 .mix-name {
     font-family: var(--font-terminal);
     font-size: 0.9rem;
-    color: var(--purple);
+    color: var(--cyan);
     margin: 0 0 6px 0;
-    text-shadow: 0 0 8px var(--purple-glow);
+    text-shadow: 0 0 8px var(--cyan-glow);
 }
 
 .mix-meta {
     display: flex;
     gap: 10px;
     font-size: 0.65rem;
-    color: var(--purple-dim);
+    color: var(--cyan-dim);
     margin-bottom: 10px;
 }
 
@@ -688,7 +699,7 @@ body {
 .mix-player {
     width: 100%;
     height: 140px;
-    border: 1px solid var(--purple-dim);
+    border: 1px solid var(--cyan-dim);
     background: var(--terminal-bg);
     overflow: hidden;
 }
@@ -704,9 +715,9 @@ body {
     padding: 8px;
     text-align: center;
     font-size: 0.6rem;
-    color: var(--purple-dim);
-    border-top: 1px solid var(--purple-dim);
-    background: rgba(191, 0, 255, 0.03);
+    color: var(--cyan-dim);
+    border-top: 1px solid var(--cyan-dim);
+    background: rgba(0, 229, 255, 0.03);
 }
 
 /* =====================================================
@@ -724,32 +735,73 @@ body {
 }
 
 .mix-mobile-item {
-    padding: 20px;
-    border: 1px solid var(--green-dim);
-    background: rgba(0, 255, 65, 0.02);
+    border: 1px solid var(--cyan-dim);
+    background: rgba(0, 229, 255, 0.02);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.mix-mobile-item.active {
+    border-color: var(--cyan);
 }
 
 .mix-mobile-header {
-    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .mix-mobile-header .mix-type {
-    display: block;
-    margin-bottom: 5px;
+    flex-shrink: 0;
 }
 
 .mix-mobile-header .mix-name {
-    margin-bottom: 5px;
+    flex: 1;
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .mix-mobile-header .mix-meta {
+    display: none;
+}
+
+.mix-mobile-item.active .mix-mobile-header .mix-meta {
     display: block;
-    margin-bottom: 0;
+}
+
+.mix-mobile-expand {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    color: var(--cyan-dim);
+    transition: transform 0.3s ease;
+}
+
+.mix-mobile-item.active .mix-mobile-expand {
+    transform: rotate(180deg);
+}
+
+.mix-mobile-body {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.mix-mobile-body-inner {
+    padding: 0 15px 15px;
 }
 
 .mix-mobile-player {
-    border: 1px solid var(--green-dim);
-    margin-bottom: 15px;
+    border: 1px solid var(--cyan-dim);
+}
+
+.mix-mobile-meta {
+    font-size: 0.65rem;
+    color: var(--cyan-dim);
+    margin-bottom: 10px;
 }
 
 .mix-description {
@@ -759,7 +811,7 @@ body {
 }
 
 .mix-mobile-item + .mix-mobile-item {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 /* Dystopian Intro Text (between Sets and Releases) */
@@ -788,10 +840,10 @@ body {
     max-width: calc(100vw - 250px);
     height: 90vh;
     background: rgba(5, 5, 5, 0.97);
-    border: 2px solid var(--green);
+    border: 2px solid var(--amber);
     box-shadow:
-        0 0 var(--glow-strength) var(--green-glow),
-        inset 0 0 60px rgba(0, 255, 65, 0.03);
+        0 0 var(--glow-strength) var(--amber-glow),
+        inset 0 0 60px rgba(255, 176, 0, 0.03);
     z-index: 400;
     left: -100%;
     opacity: 0;
@@ -843,7 +895,7 @@ body {
 }
 
 .detail-content::-webkit-scrollbar-thumb {
-    background: var(--green-dim);
+    background: var(--amber-dim);
 }
 
 /* Detail Panel Content Styles */
@@ -897,7 +949,7 @@ body {
     font-size: 1.4rem;
     font-weight: normal;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px var(--green-glow);
+    text-shadow: 0 0 10px var(--amber-glow);
 }
 
 .detail-meta {
@@ -952,17 +1004,17 @@ body {
     align-items: center;
     gap: 0.75rem;
     padding: 0.6rem 0.8rem;
-    border: 1px solid var(--green-dark);
-    color: var(--green);
+    border: 1px solid var(--amber-dim);
+    color: var(--amber);
     font-size: 0.75rem;
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
 .detail-link:hover {
-    border-color: var(--green);
-    background: rgba(0, 255, 65, 0.1);
-    box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+    border-color: var(--amber);
+    background: rgba(255, 176, 0, 0.1);
+    box-shadow: 0 0 10px var(--amber-glow);
 }
 
 .detail-link-icon {
@@ -984,8 +1036,8 @@ body {
     padding: 0.5rem 0.75rem;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
-    border: 1px solid var(--green);
-    color: var(--green);
+    border: 1px solid var(--amber);
+    color: var(--amber);
     font-size: 0.7rem;
     letter-spacing: 0.05em;
     text-decoration: none;
@@ -993,9 +1045,9 @@ body {
 }
 
 .detail-stream-btn:hover {
-    background: var(--green);
+    background: var(--amber);
     color: var(--bg);
-    box-shadow: 0 0 10px var(--green-glow);
+    box-shadow: 0 0 10px var(--amber-glow);
 }
 
 /* Embedded Player */
@@ -1085,23 +1137,23 @@ body {
     align-items: center;
     gap: 1rem;
     cursor: pointer;
-    border: 1px solid var(--green-dark);
-    background: rgba(0, 255, 65, 0.02);
+    border: 1px solid var(--amber-dim);
+    background: rgba(255, 176, 0, 0.02);
     transition: all 0.3s ease;
     padding: 0.75rem;
     height: 80px;
 }
 
 .release-card:hover {
-    border-color: var(--green);
-    background: rgba(0, 255, 65, 0.08);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+    border-color: var(--amber);
+    background: rgba(255, 176, 0, 0.08);
+    box-shadow: 0 0 15px var(--amber-glow);
 }
 
 .release-card.active {
-    border-color: var(--green);
-    background: rgba(0, 255, 65, 0.1);
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    border-color: var(--amber);
+    background: rgba(255, 176, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 176, 0, 0.4);
 }
 
 .release-card .release-artwork {
@@ -1159,7 +1211,8 @@ body {
     font-size: 0.85rem;
     font-weight: normal;
     margin-bottom: 0.2rem;
-    text-shadow: 0 0 8px var(--green-glow);
+    color: var(--amber);
+    text-shadow: 0 0 8px var(--amber-glow);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1167,7 +1220,7 @@ body {
 
 .release-info .release-year {
     font-size: 0.6rem;
-    color: var(--green-dim);
+    color: var(--amber-dim);
 }
 
 /* =====================================================
@@ -1350,9 +1403,37 @@ body {
     text-shadow: 0 0 10px var(--purple-glow);
 }
 
-/* Live Section - Force Purple Theme */
-section[data-section="3"] .section-marker {
+/* Section Marker Colors - CRT Phosphor Theme */
+section[data-section="1"] .section-marker { color: var(--cyan-dim); }
+section[data-section="2"] .section-marker { color: var(--amber-dim); }
+section[data-section="3"] .section-marker { color: var(--purple); }
+section[data-section="4"] .section-marker { color: var(--rose-dim); }
+
+/* Scroll Progress Label Colors */
+.progress-sections span[data-target="1"] { color: var(--cyan-dim); }
+.progress-sections span[data-target="2"] { color: var(--amber-dim); }
+.progress-sections span[data-target="3"] { color: var(--purple-dim); }
+.progress-sections span[data-target="4"] { color: var(--rose-dim); }
+
+.progress-sections span[data-target="1"]:hover,
+.progress-sections span[data-target="1"].active {
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan);
+}
+.progress-sections span[data-target="2"]:hover,
+.progress-sections span[data-target="2"].active {
+    color: var(--amber);
+    text-shadow: 0 0 10px var(--amber);
+}
+.progress-sections span[data-target="3"]:hover,
+.progress-sections span[data-target="3"].active {
     color: var(--purple);
+    text-shadow: 0 0 10px var(--purple);
+}
+.progress-sections span[data-target="4"]:hover,
+.progress-sections span[data-target="4"].active {
+    color: var(--rose);
+    text-shadow: 0 0 10px var(--rose);
 }
 
 section[data-section="3"] .live-status-text,
@@ -1911,23 +1992,23 @@ section[data-section="3"] h2 {
     align-items: center;
     gap: 1rem;
     cursor: pointer;
-    border: 1px solid var(--amber);
-    background: rgba(255, 176, 0, 0.02);
+    border: 1px solid var(--rose-dim);
+    background: rgba(255, 0, 85, 0.02);
     transition: all 0.3s ease;
     padding: 0.75rem;
     height: 80px;
 }
 
 .merch-card:hover {
-    border-color: var(--amber);
-    background: rgba(255, 176, 0, 0.08);
-    box-shadow: 0 0 15px rgba(255, 176, 0, 0.3);
+    border-color: var(--rose);
+    background: rgba(255, 0, 85, 0.08);
+    box-shadow: 0 0 15px var(--rose-glow);
 }
 
 .merch-card.active {
-    border-color: var(--amber);
-    background: rgba(255, 176, 0, 0.1);
-    box-shadow: 0 0 20px rgba(255, 176, 0, 0.4);
+    border-color: var(--rose);
+    background: rgba(255, 0, 85, 0.1);
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
 }
 
 .merch-card .merch-artwork {
@@ -1935,7 +2016,7 @@ section[data-section="3"] h2 {
     height: 60px;
     flex-shrink: 0;
     position: relative;
-    border: 1px solid var(--amber);
+    border: 1px solid var(--rose-dim);
     overflow: hidden;
 }
 
@@ -1977,7 +2058,7 @@ section[data-section="3"] h2 {
 
 .merch-card-info .merch-card-type {
     font-size: 0.6rem;
-    color: var(--amber);
+    color: var(--rose);
     margin-bottom: 0.2rem;
 }
 
@@ -1985,23 +2066,23 @@ section[data-section="3"] h2 {
     font-size: 0.85rem;
     font-weight: normal;
     margin-bottom: 0.2rem;
-    text-shadow: 0 0 8px rgba(255, 176, 0, 0.4);
+    text-shadow: 0 0 8px var(--rose-glow);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--amber);
+    color: var(--rose);
 }
 
 .merch-card-info .merch-card-variant {
     font-size: 0.6rem;
-    color: var(--green-dim);
+    color: var(--rose-dim);
 }
 
 /* Merch card focus state */
 .merch-card:focus-visible {
-    border-color: var(--amber);
-    background: rgba(255, 176, 0, 0.1);
-    box-shadow: 0 0 20px rgba(255, 176, 0, 0.4);
+    border-color: var(--rose);
+    background: rgba(255, 0, 85, 0.1);
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
     outline: none;
 }
 
@@ -2030,7 +2111,7 @@ section[data-section="3"] h2 {
 
 .merch-image-item {
     position: relative;
-    border: 1px solid var(--amber);
+    border: 1px solid var(--rose-dim);
     overflow: hidden;
     aspect-ratio: 1;
 }
@@ -2072,7 +2153,7 @@ section[data-section="3"] h2 {
     padding: 0.4rem;
     background: rgba(5, 5, 5, 0.9);
     font-size: 0.65rem;
-    color: var(--amber);
+    color: var(--rose);
     text-align: center;
     letter-spacing: 0.1em;
 }
@@ -2107,9 +2188,9 @@ section[data-section="3"] h2 {
 }
 
 .merch-info-value.price {
-    color: var(--amber);
+    color: var(--rose);
     font-size: 0.9rem;
-    text-shadow: 0 0 5px rgba(255, 176, 0, 0.3);
+    text-shadow: 0 0 5px var(--rose-glow);
 }
 
 .merch-info-value.status-available {
@@ -2117,7 +2198,7 @@ section[data-section="3"] h2 {
 }
 
 .merch-info-value.status-limited {
-    color: var(--amber);
+    color: var(--rose);
 }
 
 /* Merch CTA buttons */
@@ -2140,9 +2221,9 @@ section[data-section="3"] h2 {
     justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1rem;
-    border: 1px solid var(--amber);
+    border: 1px solid var(--rose);
     background: transparent;
-    color: var(--amber);
+    color: var(--rose);
     font-family: var(--font-terminal);
     font-size: 0.8rem;
     letter-spacing: 0.1em;
@@ -2152,19 +2233,19 @@ section[data-section="3"] h2 {
 }
 
 .merch-cta-btn:hover {
-    background: var(--amber);
+    background: var(--rose);
     color: var(--bg);
-    box-shadow: 0 0 15px rgba(255, 176, 0, 0.4);
+    box-shadow: 0 0 15px var(--rose-glow);
 }
 
 .merch-cta-btn.primary {
-    background: var(--amber);
+    background: var(--rose);
     color: var(--bg);
 }
 
 .merch-cta-btn.primary:hover {
     background: transparent;
-    color: var(--amber);
+    color: var(--rose);
 }
 
 .merch-cta-btn.secondary {
@@ -2178,20 +2259,24 @@ section[data-section="3"] h2 {
     box-shadow: 0 0 15px var(--green-glow);
 }
 
-/* Merch detail panel amber accent */
+/* Merch detail panel rose accent */
 .detail-panel.merch-panel {
-    border-color: var(--amber);
+    border-color: var(--rose);
     box-shadow:
-        0 0 var(--glow-strength) rgba(255, 176, 0, 0.3),
-        inset 0 0 60px rgba(255, 176, 0, 0.03);
+        0 0 var(--glow-strength) var(--rose-glow),
+        inset 0 0 60px rgba(255, 0, 85, 0.03);
 }
 
 .detail-panel.merch-panel .detail-type {
-    color: var(--amber);
+    color: var(--rose);
 }
 
 .detail-panel.merch-panel .detail-title {
-    text-shadow: 0 0 10px rgba(255, 176, 0, 0.4);
+    text-shadow: 0 0 10px var(--rose-glow);
+}
+
+.detail-panel.merch-panel .detail-content::-webkit-scrollbar-thumb {
+    background: var(--rose-dim);
 }
 
 /* =====================================================
@@ -2408,7 +2493,7 @@ section[data-section="3"] h2 {
 
     /* Better touch feedback */
     .release-card:active {
-        background: rgba(0, 255, 65, 0.15);
+        background: rgba(255, 176, 0, 0.15);
         transform: scale(0.98);
     }
 
@@ -2450,7 +2535,7 @@ section[data-section="3"] h2 {
 
     /* Better touch feedback for merch */
     .merch-card:active {
-        background: rgba(255, 176, 0, 0.15);
+        background: rgba(255, 0, 85, 0.15);
         transform: scale(0.98);
     }
 
@@ -2525,9 +2610,9 @@ button:focus-visible {
 
 /* Release cards */
 .release-card:focus-visible {
-    border-color: var(--green);
-    background: rgba(0, 255, 65, 0.1);
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    border-color: var(--amber);
+    background: rgba(255, 176, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 176, 0, 0.4);
     outline: none;
 }
 

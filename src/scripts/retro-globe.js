@@ -1176,6 +1176,51 @@ function initMixesAccordion() {
             if (!wasActive) item.classList.add('active');
         });
     });
+
+    // Mobile mixes accordion
+    const mobileMixItems = document.querySelectorAll('.mix-mobile-item');
+    mobileMixItems.forEach(item => {
+        const header = item.querySelector('.mix-mobile-header');
+        const body = item.querySelector('.mix-mobile-body');
+        if (!header || !body) return;
+
+        header.addEventListener('click', () => {
+            const wasActive = item.classList.contains('active');
+
+            // Close all
+            mobileMixItems.forEach(i => {
+                i.classList.remove('active');
+                const b = i.querySelector('.mix-mobile-body');
+                if (b) b.style.height = '0';
+            });
+
+            if (!wasActive) {
+                item.classList.add('active');
+
+                // Lazy-load iframe on first open
+                const player = item.querySelector('.mix-mobile-player');
+                if (player && !player.querySelector('iframe')) {
+                    const src = item.dataset.mixSrc;
+                    if (src) {
+                        const iframe = document.createElement('iframe');
+                        iframe.width = '100%';
+                        iframe.height = '166';
+                        iframe.scrolling = 'no';
+                        iframe.frameBorder = 'no';
+                        iframe.allow = 'autoplay';
+                        iframe.src = src;
+                        player.appendChild(iframe);
+                    }
+                }
+
+                // Animate open
+                const inner = body.querySelector('.mix-mobile-body-inner');
+                if (inner) {
+                    body.style.height = inner.offsetHeight + 'px';
+                }
+            }
+        });
+    });
 }
 
 // =====================================================

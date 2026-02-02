@@ -14,9 +14,9 @@
     --green-dark: #003d10;
     --amber: #ffb000;
     --red: #ff0040;
-    --purple: #bf00ff;
-    --purple-dim: #8a00b8;
-    --purple-glow: rgba(191, 0, 255, 0.3);
+    --purple: #d050ff;
+    --purple-dim: #a855cc;
+    --purple-glow: rgba(208, 80, 255, 0.3);
 
     --cyan: #00e5ff;
     --cyan-dim: #0099aa;
@@ -25,9 +25,9 @@
     --amber-dim: #aa7700;
     --amber-glow: rgba(255, 176, 0, 0.3);
 
-    --rose: #ff0055;
-    --rose-dim: #aa0038;
-    --rose-glow: rgba(255, 0, 85, 0.3);
+    --rose: #ff4070;
+    --rose-dim: #cc3058;
+    --rose-glow: rgba(255, 64, 112, 0.3);
 
     /* === Typography === */
     --font-terminal: 'VT323', monospace;
@@ -1302,13 +1302,13 @@ body {
     gap: 1rem;
     padding: 0.75rem 1rem;
     border: 1px solid var(--purple-dim);
-    background: rgba(191, 0, 255, 0.02);
+    background: rgba(208, 80, 255, 0.02);
     transition: all 0.3s ease;
 }
 
 .show-item:hover {
     border-color: var(--purple);
-    background: rgba(191, 0, 255, 0.05);
+    background: rgba(208, 80, 255, 0.05);
 }
 
 .show-item.no-shows {
@@ -1382,7 +1382,7 @@ body {
     gap: 0.5rem;
     padding: 1rem;
     border: 1px solid var(--purple-dim);
-    background: rgba(191, 0, 255, 0.03);
+    background: rgba(208, 80, 255, 0.03);
 }
 
 .booking-label {
@@ -1993,7 +1993,7 @@ section[data-section="3"] h2 {
     gap: 1rem;
     cursor: pointer;
     border: 1px solid var(--rose-dim);
-    background: rgba(255, 0, 85, 0.02);
+    background: rgba(255, 64, 112, 0.02);
     transition: all 0.3s ease;
     padding: 0.75rem;
     height: 80px;
@@ -2001,14 +2001,14 @@ section[data-section="3"] h2 {
 
 .merch-card:hover {
     border-color: var(--rose);
-    background: rgba(255, 0, 85, 0.08);
+    background: rgba(255, 64, 112, 0.08);
     box-shadow: 0 0 15px var(--rose-glow);
 }
 
 .merch-card.active {
     border-color: var(--rose);
-    background: rgba(255, 0, 85, 0.1);
-    box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+    background: rgba(255, 64, 112, 0.1);
+    box-shadow: 0 0 20px rgba(255, 64, 112, 0.4);
 }
 
 .merch-card .merch-artwork {
@@ -2081,8 +2081,8 @@ section[data-section="3"] h2 {
 /* Merch card focus state */
 .merch-card:focus-visible {
     border-color: var(--rose);
-    background: rgba(255, 0, 85, 0.1);
-    box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+    background: rgba(255, 64, 112, 0.1);
+    box-shadow: 0 0 20px rgba(255, 64, 112, 0.4);
     outline: none;
 }
 
@@ -2264,7 +2264,7 @@ section[data-section="3"] h2 {
     border-color: var(--rose);
     box-shadow:
         0 0 var(--glow-strength) var(--rose-glow),
-        inset 0 0 60px rgba(255, 0, 85, 0.03);
+        inset 0 0 60px rgba(255, 64, 112, 0.03);
 }
 
 .detail-panel.merch-panel .detail-type {
@@ -2535,7 +2535,7 @@ section[data-section="3"] h2 {
 
     /* Better touch feedback for merch */
     .merch-card:active {
-        background: rgba(255, 0, 85, 0.15);
+        background: rgba(255, 64, 112, 0.15);
         transform: scale(0.98);
     }
 

@@ -554,8 +554,8 @@ body {
 
 .mixes-panel-inner {
     background: rgba(5, 5, 5, 0.98);
-    border: 2px solid var(--green);
-    box-shadow: 0 0 20px var(--green-glow);
+    border: 2px solid var(--cyan);
+    box-shadow: 0 0 20px var(--cyan-glow);
     display: flex;
     flex-direction: column;
     max-height: 80vh;
@@ -577,7 +577,7 @@ body {
 }
 
 .mixes-content::-webkit-scrollbar-thumb {
-    background: var(--green-dim);
+    background: var(--cyan-dim);
 }
 
 .mix-item {
@@ -587,11 +587,11 @@ body {
 
 .mixes-header {
     padding: 10px 15px;
-    border-bottom: 1px solid var(--green-dim);
+    border-bottom: 1px solid var(--cyan-dim);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 255, 65, 0.05);
+    background: rgba(0, 229, 255, 0.05);
 }
 
 .mixes-title-row {
@@ -601,15 +601,15 @@ body {
 }
 
 .mixes-title-row .terminal-prompt {
-    color: var(--green);
+    color: var(--cyan);
     animation: blink 1s step-end infinite;
 }
 
 .mixes-title {
     font-family: var(--font-terminal);
     font-size: 1rem;
-    color: var(--green);
-    text-shadow: 0 0 10px var(--green-glow);
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan-glow);
 }
 
 .mixes-status {
@@ -617,29 +617,29 @@ body {
     align-items: center;
     gap: 6px;
     font-size: 0.65rem;
-    color: var(--green-dim);
+    color: var(--cyan-dim);
 }
 
 .mixes-status .status-dot {
-    background: var(--green);
-    box-shadow: 0 0 8px var(--green);
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
 }
 
 .mix-item {
     padding: 12px;
-    border: 1px solid var(--green-dim);
-    background: rgba(0, 255, 65, 0.03);
+    border: 1px solid var(--cyan-dim);
+    background: rgba(0, 229, 255, 0.03);
     cursor: pointer;
     transition: border-color 0.2s ease;
 }
 
 .mix-item:hover {
-    border-color: var(--green);
+    border-color: var(--cyan);
 }
 
 .mix-item.active {
-    border-color: var(--green);
-    background: rgba(0, 255, 65, 0.06);
+    border-color: var(--cyan);
+    background: rgba(0, 229, 255, 0.06);
 }
 
 .mix-item + .mix-item {
@@ -650,27 +650,27 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 0.65rem;
-    color: var(--green-dim);
+    color: var(--cyan-dim);
     margin-bottom: 3px;
 }
 
 .mix-type {
-    color: var(--green);
+    color: var(--cyan);
 }
 
 .mix-name {
     font-family: var(--font-terminal);
     font-size: 0.9rem;
-    color: var(--green);
+    color: var(--cyan);
     margin: 0 0 6px 0;
-    text-shadow: 0 0 8px var(--green-glow);
+    text-shadow: 0 0 8px var(--cyan-glow);
 }
 
 .mix-meta {
     display: flex;
     gap: 10px;
     font-size: 0.65rem;
-    color: var(--green-dim);
+    color: var(--cyan-dim);
     margin-bottom: 10px;
 }
 
@@ -688,7 +688,7 @@ body {
 .mix-player {
     width: 100%;
     height: 140px;
-    border: 1px solid var(--green-dim);
+    border: 1px solid var(--cyan-dim);
     background: var(--terminal-bg);
     overflow: hidden;
 }
@@ -704,9 +704,9 @@ body {
     padding: 8px;
     text-align: center;
     font-size: 0.6rem;
-    color: var(--green-dim);
-    border-top: 1px solid var(--green-dim);
-    background: rgba(0, 255, 65, 0.03);
+    color: var(--cyan-dim);
+    border-top: 1px solid var(--cyan-dim);
+    background: rgba(0, 229, 255, 0.03);
 }
 
 /* =====================================================
@@ -724,14 +724,14 @@ body {
 }
 
 .mix-mobile-item {
-    border: 1px solid var(--green-dim);
-    background: rgba(0, 255, 65, 0.02);
+    border: 1px solid var(--cyan-dim);
+    background: rgba(0, 229, 255, 0.02);
     cursor: pointer;
     transition: border-color 0.2s ease;
 }
 
 .mix-mobile-item.active {
-    border-color: var(--green);
+    border-color: var(--cyan);
 }
 
 .mix-mobile-header {
@@ -765,7 +765,7 @@ body {
 .mix-mobile-expand {
     flex-shrink: 0;
     font-size: 0.7rem;
-    color: var(--green-dim);
+    color: var(--cyan-dim);
     transition: transform 0.3s ease;
 }
 
@@ -784,18 +784,18 @@ body {
 }
 
 .mix-mobile-player {
-    border: 1px solid var(--green-dim);
+    border: 1px solid var(--cyan-dim);
 }
 
 .mix-mobile-meta {
     font-size: 0.65rem;
-    color: var(--green-dim);
+    color: var(--cyan-dim);
     margin-bottom: 10px;
 }
 
 .mix-description {
     font-size: 0.85rem;
-    color: var(--green-dim);
+    color: var(--cyan-dim);
     font-style: italic;
 }
 
@@ -1392,12 +1392,16 @@ body {
     text-shadow: 0 0 10px var(--cyan-glow);
 }
 
-/* Section Marker Colors */
+/* Section Marker Colors - Sets & Live in blue */
+section[data-section="1"] .section-marker { color: var(--cyan); }
 section[data-section="3"] .section-marker { color: var(--cyan); }
 
-/* Scroll Progress Label Colors - Live section in blue */
+/* Scroll Progress Label Colors - Sets & Live in blue */
+.progress-sections span[data-target="1"] { color: var(--cyan-dim); }
 .progress-sections span[data-target="3"] { color: var(--cyan-dim); }
 
+.progress-sections span[data-target="1"]:hover,
+.progress-sections span[data-target="1"].active,
 .progress-sections span[data-target="3"]:hover,
 .progress-sections span[data-target="3"].active {
     color: var(--cyan);

@@ -1415,6 +1415,7 @@ function getSoundCloudEmbed(releaseName) {
     const soundcloudUrls = {
         'dystopian-non-fiction': 'https://soundcloud.com/stayrealsick/sets/dystopian-non-fiction',
         'technoir': 'https://soundcloud.com/stayrealsick/sets/technoir',
+        'kuendigung': 'https://soundcloud.com/stayrealsick/kuendigung',
         'business': 'https://soundcloud.com/stayrealsick/business',
         'new-beginning': 'https://soundcloud.com/stayrealsick/new-beginning',
         'these-days': 'https://soundcloud.com/stayrealsick/these-days'

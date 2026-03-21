@@ -41,6 +41,7 @@ const platforms = [
 
 // Release data with positions spread across globe
 const releases = [
+    { name: 'open-autobahn', label: 'OPEN AUTOBAHN', type: 'SINGLE', year: '2026', lat: 50.11, lon: 8.68, color: 0x00ff41 },  // Frankfurt (Autobahn)
     { name: 'dystopian-non-fiction', label: 'DYSTOPIAN NON-FICTION', type: 'ALBUM', year: '2025', lat: 52.52, lon: 13.40, color: 0x00ff41 },  // Berlin
     { name: 'technoir', label: 'TECHNOIR', type: 'EP', year: '2025', lat: 35.68, lon: 139.69, color: 0x00ff41 },  // Tokyo
     { name: 'business', label: 'BUSINESS', type: 'SINGLE', year: '2025', lat: 40.71, lon: -74.01, color: 0x00ff41 },  // New York
@@ -1415,6 +1416,7 @@ function getSoundCloudEmbed(releaseName) {
     const soundcloudUrls = {
         'dystopian-non-fiction': 'https://soundcloud.com/stayrealsick/sets/dystopian-non-fiction',
         'technoir': 'https://soundcloud.com/stayrealsick/sets/technoir',
+        'open-autobahn': 'https://soundcloud.com/stayrealsick/openautobahn',
         'kuendigung': 'https://soundcloud.com/stayrealsick/kuendigung',
         'business': 'https://soundcloud.com/stayrealsick/business',
         'new-beginning': 'https://soundcloud.com/stayrealsick/new-beginning',

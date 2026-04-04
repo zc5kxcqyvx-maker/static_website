@@ -1064,7 +1064,7 @@ document.addEventListener('DOMContentLoaded', () => {
             firstSection.classList.add('active');
         }
 
-        console.log('%c STASIC TERMINAL v2.5 ', 'background: #00ff41; color: #0a0a0a; font-family: monospace;');
+        console.log('%c STASIC TERMINAL v2.6 ', 'background: #00ff41; color: #0a0a0a; font-family: monospace;');
         console.log('%c Connection established... ', 'color: #00ff41; font-family: monospace;');
 
         // Initialize mixes accordion
@@ -1087,20 +1087,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initPreloader(callback) {
     const preloader = document.getElementById('preloader');
-    if (!preloader) {
-        callback();
+    const text = document.getElementById('preloaderText');
+
+    if (!preloader || !text) {
+        if (callback) callback();
         return;
     }
 
-    // Hide preloader after boot sequence completes
+    const WORD = 'STASIC';
+    const CHARS = '\u2591\u2592\u2593\u2588.:;|/\\~*+=#@%&';
+    const SHUFFLE_MS = 35;
+    const LOCK_AT = 300;
+    const LOCK_STAGGER = 35;
+    const COLLAPSE_AT = 550;
+    const DONE_AT = 600;
+    const FADE_MS = 100;
+
+    // Measure how many chars fit in the line
+    text.textContent = 'M';
+    const charW = text.scrollWidth;
+    const lineW = text.clientWidth;
+    const TOTAL = Math.max(20, Math.floor(lineW / Math.max(charW, 1)));
+    const wordStart = 2; // "> " prefix feel
+
+    let locked = new Array(TOTAL).fill(false);
+    let collapsed = false;
+
+    function rnd() { return CHARS[Math.floor(Math.random() * CHARS.length)]; }
+
+    function render() {
+        if (collapsed) {
+            text.textContent = '> ' + WORD + '_TERMINAL v2.6';
+            return;
+        }
+        let s = '';
+        for (let i = 0; i < TOTAL; i++) {
+            if (locked[i] && i >= wordStart && i < wordStart + WORD.length) {
+                s += WORD[i - wordStart];
+            } else {
+                s += rnd();
+            }
+        }
+        text.textContent = s;
+    }
+
+    const shuffleId = setInterval(render, SHUFFLE_MS);
+    render();
+
+    // Lock STASIC letters one by one
+    for (let i = 0; i < WORD.length; i++) {
+        setTimeout(() => { locked[wordStart + i] = true; render(); }, LOCK_AT + i * LOCK_STAGGER);
+    }
+
+    // Collapse to final header text
+    setTimeout(() => { collapsed = true; clearInterval(shuffleId); render(); }, COLLAPSE_AT);
+
+    // Fade out, show site
     setTimeout(() => {
-        preloader.classList.add('hidden');
-        // Remove from DOM after transition
+        preloader.classList.add('fade-out');
         setTimeout(() => {
-            preloader.remove();
-        }, 500);
-        callback();
-    }, 2000);
+            preloader.style.display = 'none';
+            window.dispatchEvent(new Event('preloader-done'));
+            if (callback) callback();
+        }, FADE_MS);
+    }, DONE_AT);
 }
 
 // =====================================================

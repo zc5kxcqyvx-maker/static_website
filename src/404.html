@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 | CONNECTION LOST - STASIC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>404 | SIGNAL LOST - STASIC</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
@@ -12,13 +12,10 @@
             --green: #00ff41;
             --green-dim: #00aa2a;
             --green-glow: rgba(0, 255, 65, 0.4);
+            --red: #ff0040;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: var(--bg);
@@ -26,86 +23,85 @@
             font-family: 'VT323', monospace;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .error-container {
-            text-align: center;
-            padding: 2rem;
-            max-width: 600px;
+        .game-wrapper {
+            width: 100%;
+            max-width: 660px;
+            padding: 1rem;
         }
 
-        .error-code {
-            font-size: 8rem;
-            line-height: 1;
-            text-shadow: 0 0 30px var(--green-glow);
-            animation: glitch 2s infinite;
-        }
-
-        @keyframes glitch {
-            0%, 90%, 100% { transform: translate(0); }
-            92% { transform: translate(-5px, 2px); }
-            94% { transform: translate(5px, -2px); }
-            96% { transform: translate(-3px, 0); }
-            98% { transform: translate(3px, 0); }
-        }
-
-        .error-title {
-            font-size: 2rem;
-            margin: 1rem 0;
-            color: var(--green);
-            text-shadow: 0 0 10px var(--green-glow);
-        }
-
-        .error-message {
-            font-size: 1.2rem;
-            color: var(--green-dim);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .terminal-output {
-            text-align: left;
-            background: rgba(0, 255, 65, 0.05);
+        .game-frame {
             border: 1px solid var(--green-dim);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            font-size: 0.9rem;
+            padding: 1rem 1.2rem;
+            background: rgba(0, 255, 65, 0.02);
+            box-shadow:
+                0 0 30px rgba(0, 255, 65, 0.08),
+                inset 0 0 30px rgba(0, 255, 65, 0.03);
         }
 
-        .terminal-output div {
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.2);
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--green-dim);
         }
 
-        .error-status {
-            color: #ff0040;
+        .game-header .scores span {
+            margin-left: 1rem;
         }
 
-        .back-link {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border: 2px solid var(--green);
+        #game-screen {
+            font-size: clamp(8px, 2.2vw, 14px);
+            line-height: 1.15;
+            letter-spacing: 0.5px;
+            white-space: pre;
+            text-shadow: 0 0 4px var(--green-glow);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .game-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(0, 255, 65, 0.2);
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            color: var(--green-dim);
+        }
+
+        .home-link {
             color: var(--green);
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            border: 1px solid var(--green-dim);
+            padding: 0.25rem 0.7rem;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-size: 1rem;
         }
 
-        .back-link:hover {
+        .home-link:hover {
             background: var(--green);
             color: var(--bg);
-            box-shadow: 0 0 20px var(--green-glow);
+            box-shadow: 0 0 15px var(--green-glow);
         }
 
-        /* Scanlines */
         .scanlines {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 1000;
             background: repeating-linear-gradient(
@@ -117,25 +113,19 @@
             );
         }
 
-        /* Vignette */
         .vignette {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 999;
             box-shadow: inset 0 0 150px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .blink {
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        @media (max-width: 400px) {
+            .game-header { font-size: 0.9rem; }
+            .game-footer { font-size: 0.85rem; }
+            .game-frame { padding: 0.6rem 0.8rem; }
         }
     </style>
 </head>
@@ -143,20 +133,331 @@
     <div class="scanlines"></div>
     <div class="vignette"></div>
 
-    <div class="error-container">
-        <div class="error-code">404</div>
-        <h1 class="error-title">> CONNECTION LOST</h1>
-        <p class="error-message">The signal you're looking for has been lost in the void.</p>
-
-        <div class="terminal-output">
-            <div>> SCANNING NETWORK...</div>
-            <div>> TARGET: <span class="error-status">[NOT FOUND]</span></div>
-            <div>> STATUS: CONNECTION TERMINATED</div>
-            <div>> RECOMMENDATION: RETURN TO MAIN TERMINAL</div>
-            <div>> <span class="blink">_</span></div>
+    <div class="game-wrapper">
+        <div class="game-frame">
+            <div class="game-header">
+                <span>STASIC://RECOVERY v4.04</span>
+                <span class="scores">
+                    <span>HI:<span id="hi-score">0000</span></span>
+                    <span>SCORE:<span id="score">0000</span></span>
+                </span>
+            </div>
+            <pre id="game-screen"></pre>
+            <div class="game-footer">
+                <span id="controls-hint">[SPACE / TAP] START</span>
+                <a href="/" class="home-link">RETURN TO BASE</a>
+            </div>
         </div>
-
-        <a href="/" class="back-link">[RETURN TO BASE]</a>
     </div>
+
+    <script>
+    (() => {
+        'use strict';
+
+        const W = 55;
+        const H = 18;
+        const GROUND = 14;
+        const PX = 8;
+        const GRAVITY = 0.09;
+        const JUMP_FORCE = -0.95;
+        const BASE_SPEED = 0.35;
+        const SPEED_INC = 0.00004;
+
+        const WAVE = '\u2581\u2582\u2583\u2584\u2585\u2586\u2587\u2588\u2587\u2586\u2585\u2584\u2583\u2582\u2581';
+        const STATIC_CHARS = '\u00b7.:';
+        const GLITCH = '\u2592\u2593\u2588\u2580\u2584\u258c\u2590';
+
+        let state = 'intro';
+        let py = GROUND, vy = 0;
+        let obs = [];
+        let parts = [];
+        let score = 0, frame = 0;
+        let hi = parseInt(localStorage.getItem('s404hi') || '0');
+        let speed = BASE_SPEED;
+        let spawnIn = 80;
+        let introTick = 0;
+        let msg = '', msgT = 0, deathT = 0;
+        let glitchFrame = false;
+
+        const el = document.getElementById('game-screen');
+        const sEl = document.getElementById('score');
+        const hEl = document.getElementById('hi-score');
+        const cEl = document.getElementById('controls-hint');
+
+        const ART = [
+            '\u2588  \u2588    \u2588\u2588     \u2588  \u2588',
+            '\u2588  \u2588   \u2588  \u2588    \u2588  \u2588',
+            '\u2588\u2588\u2588\u2588   \u2588  \u2588    \u2588\u2588\u2588\u2588',
+            '   \u2588   \u2588  \u2588       \u2588',
+            '   \u2588    \u2588\u2588        \u2588'
+        ];
+
+        const INTRO = [
+            '', '',
+            ...ART.map(l => '              ' + l),
+            '',
+            '          \u2591\u2592\u2593 SIGNAL LOST \u2593\u2592\u2591',
+            '',
+            '    > TARGET FREQUENCY: NOT FOUND',
+            '    > ERROR CODE: 404',
+            '    > RECOVERY PROTOCOL: STANDBY',
+            '',
+            '    \u25c6 = SIGNAL    \u2593 = CORRUPTED DATA',
+            '',
+            '       [SPACE] OR [TAP] TO BEGIN'
+        ];
+
+        const MILES = [
+            [100,  'SIGNAL DETECTED...'],
+            [250,  'FREQUENCY LOCKED...'],
+            [500,  'DECRYPTING CHANNEL...'],
+            [750,  'CONNECTION STABILIZING...'],
+            [1000, 'ALMOST THERE...'],
+            [1500, 'CONNECTION RESTORED!']
+        ];
+
+        function pad(n) { return String(n).padStart(4, '0'); }
+        function ri(m) { return Math.floor(Math.random() * m); }
+        function rc(s) { return s[ri(s.length)]; }
+
+        function grid() { return Array.from({length: H}, () => Array(W).fill(' ')); }
+
+        function put(g, r, c, t) {
+            for (let i = 0; i < t.length; i++) {
+                let x = c + i;
+                if (x >= 0 && x < W && r >= 0 && r < H) g[r][x] = t[i];
+            }
+        }
+
+        function str(g) { return g.map(r => r.join('')).join('\n'); }
+
+        function renderIntro() {
+            let g = grid();
+            let lines = Math.min(Math.floor(introTick / 3), INTRO.length);
+            for (let i = 0; i < lines; i++) put(g, i, 0, INTRO[i]);
+            if (lines < INTRO.length) {
+                let ln = INTRO[lines] || '';
+                let ch = Math.min(Math.floor((introTick - lines * 3) * 2), ln.length);
+                put(g, lines, 0, ln.substring(0, ch) + '\u2588');
+            } else if (ri(30) < 15) {
+                put(g, INTRO.length - 1, 0, INTRO[INTRO.length - 1]);
+            }
+            introTick++;
+            return g;
+        }
+
+        function reset() {
+            py = GROUND; vy = 0;
+            obs = []; parts = [];
+            score = 0; frame = 0;
+            speed = BASE_SPEED;
+            spawnIn = 80;
+            msg = ''; msgT = 0; deathT = 0;
+        }
+
+        function jump() {
+            if (state === 'intro') { state = 'playing'; reset(); return; }
+            if (state === 'dead' && deathT > 20) { reset(); state = 'playing'; return; }
+            if (state === 'playing' && py >= GROUND - 0.3) vy = JUMP_FORCE;
+        }
+
+        function die() {
+            state = 'dead'; deathT = 0;
+            if (score > hi) { hi = score; localStorage.setItem('s404hi', String(hi)); }
+            for (let i = 0; i < 10; i++) {
+                parts.push({
+                    x: PX, y: Math.round(py),
+                    vx: (Math.random() - 0.5) * 2.5,
+                    vy: (Math.random() - 0.7) * 2,
+                    life: 8 + ri(15), ch: rc(GLITCH)
+                });
+            }
+        }
+
+        function update() {
+            if (state === 'dead') { deathT++; }
+            if (state !== 'playing') return;
+
+            frame++;
+            score = Math.floor(frame / 4);
+            speed = BASE_SPEED + frame * SPEED_INC;
+
+            // Milestones
+            for (let [th, m] of MILES) {
+                if (score === th) { msg = m; msgT = 70; }
+            }
+            if (msgT > 0) msgT--;
+
+            // Glitch effect
+            glitchFrame = ri(200) === 0;
+
+            // Physics
+            vy += GRAVITY;
+            py += vy;
+            if (py >= GROUND) { py = GROUND; vy = 0; }
+
+            // Spawn
+            spawnIn--;
+            if (spawnIn <= 0) {
+                let h = 1 + ri(3);
+                // Don't spawn impossible combos - ensure gap between obstacles
+                let minGap = Math.max(22, 45 - Math.floor(frame / 150));
+                spawnIn = minGap + ri(25);
+                obs.push({ x: W + 1, h: h });
+            }
+
+            // Move obstacles
+            for (let o of obs) o.x -= speed;
+            obs = obs.filter(o => o.x > -2);
+
+            // Collision
+            let pyr = Math.round(py);
+            for (let o of obs) {
+                if (Math.abs(o.x - PX) < 0.9 && pyr > GROUND - o.h) {
+                    die(); break;
+                }
+            }
+
+            // Particles
+            for (let p of parts) {
+                p.x += p.vx; p.y += p.vy; p.vy += 0.04; p.life--;
+            }
+            parts = parts.filter(p => p.life > 0);
+        }
+
+        function renderGame() {
+            let g = grid();
+            let gOff = glitchFrame ? ri(3) - 1 : 0;
+
+            // Sparse background static
+            for (let y = 0; y < GROUND; y++) {
+                for (let x = 0; x < W; x++) {
+                    if (Math.random() < 0.004) g[y][x] = rc(STATIC_CHARS);
+                }
+            }
+
+            // Waveform ground
+            for (let x = 0; x < W; x++) {
+                let wi = Math.floor((x + frame * 0.6) % WAVE.length);
+                if (wi < 0) wi += WAVE.length;
+                g[GROUND + 1][(x + gOff + W) % W] = WAVE[wi];
+            }
+
+            // Baseline
+            for (let x = 0; x < W; x++) {
+                g[GROUND + 2][x] = '\u2500';
+            }
+
+            // Speed indicator - subtle dots that scroll faster as speed increases
+            if (frame % 3 === 0) {
+                let dotY = GROUND + 3;
+                if (dotY < H) {
+                    for (let x = 0; x < W; x++) {
+                        if ((x + frame) % Math.max(3, 12 - Math.floor(speed * 5)) === 0) {
+                            g[dotY][x] = '\u00b7';
+                        }
+                    }
+                }
+            }
+
+            // Obstacles
+            for (let o of obs) {
+                let ox = Math.round(o.x) + gOff;
+                for (let i = 0; i < o.h; i++) {
+                    let oy = GROUND - i;
+                    if (ox >= 0 && ox < W && oy >= 0) {
+                        g[oy][ox] = '\u2593';
+                        // Shadow/glow on tall obstacles
+                        if (o.h >= 3 && ox + 1 < W) g[oy][ox + 1] = '\u2591';
+                    }
+                }
+                // Base marker
+                if (ox >= 0 && ox < W && GROUND + 1 < H) {
+                    g[GROUND + 1][ox] = '\u2588';
+                }
+            }
+
+            // Player
+            let pyr = Math.round(py);
+            if (pyr >= 0 && pyr < H) {
+                let ch = '\u25c6';
+                if (state === 'dead') ch = '\u2716';
+                else if (py < GROUND - 0.5) ch = '\u25b2';
+                g[pyr][PX + gOff] = ch;
+                // Trail when jumping
+                if (state === 'playing' && py < GROUND - 1 && pyr + 1 < H) {
+                    g[pyr + 1][PX + gOff] = '\u00b7';
+                }
+            }
+
+            // Particles
+            for (let p of parts) {
+                let px = Math.round(p.x), ppy = Math.round(p.y);
+                if (px >= 0 && px < W && ppy >= 0 && ppy < H) g[ppy][px] = p.ch;
+            }
+
+            // Milestone message
+            if (msgT > 0 && msg) {
+                let t = '> ' + msg;
+                let flash = msgT > 50 ? (ri(4) < 3) : true;
+                if (flash) put(g, 2, Math.floor((W - t.length) / 2), t);
+            }
+
+            // Death messages
+            if (state === 'dead' && deathT > 20) {
+                let m1 = '> SIGNAL CORRUPTED';
+                put(g, 5, Math.floor((W - m1.length) / 2), m1);
+
+                if (Math.floor(deathT / 20) % 2 === 0) {
+                    let m2 = '[SPACE / TAP] RETRY';
+                    put(g, 7, Math.floor((W - m2.length) / 2), m2);
+                }
+
+                if (score >= 1500) {
+                    let m3 = '> CONNECTION RESTORED';
+                    put(g, 9, Math.floor((W - m3.length) / 2), m3);
+                }
+            }
+
+            return g;
+        }
+
+        // === LOOP ===
+        function loop() {
+            update();
+            el.textContent = str(state === 'intro' ? renderIntro() : renderGame());
+            sEl.textContent = pad(score);
+            hEl.textContent = pad(hi);
+            cEl.textContent = state === 'playing' ? '[SPACE / TAP] JUMP'
+                            : state === 'dead' ? '[SPACE / TAP] RETRY'
+                            : '[SPACE / TAP] START';
+            requestAnimationFrame(loop);
+        }
+
+        // === INPUT ===
+        document.addEventListener('keydown', e => {
+            if (e.code === 'Space' || e.key === ' ') { e.preventDefault(); jump(); }
+            if (e.key === 'Enter' && state === 'dead' && score >= 1500) {
+                window.location.href = '/';
+            }
+            if (e.key === 'Escape') { window.location.href = '/'; }
+        });
+
+        document.addEventListener('touchstart', e => {
+            if (e.target.closest('.home-link')) return;
+            e.preventDefault();
+            jump();
+        }, { passive: false });
+
+        document.addEventListener('click', e => {
+            if (e.target.closest('.home-link')) return;
+            jump();
+        });
+
+        // === START ===
+        hEl.textContent = pad(hi);
+        loop();
+    })();
+    </script>
 </body>
 </html>

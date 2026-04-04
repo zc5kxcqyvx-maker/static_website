@@ -77,19 +77,7 @@
 
     <!-- Preloader -->
     <div class="preloader" id="preloader">
-        <div class="boot-screen">
-            <div class="boot-line">> STASIC TERMINAL v2.5</div>
-            <div class="boot-line">> INITIALIZING SYSTEM...</div>
-            <div class="boot-line">> LOADING AUDIO DRIVERS... <span class="status-ok">[OK]</span></div>
-            <div class="boot-line">> ESTABLISHING CONNECTION... <span class="status-ok">[OK]</span></div>
-            <div class="boot-line">> RENDERING GLOBE MATRIX... <span class="status-ok">[OK]</span></div>
-            <div class="boot-line">> CALIBRATING CRT DISPLAY... <span class="status-ok">[OK]</span></div>
-            <div class="boot-line">> SYNCING FREQUENCIES... <span class="status-ok">[OK]</span></div>
-            <div class="boot-line final">> SYSTEM READY_</div>
-            <div class="boot-progress">
-                <div class="boot-progress-bar"></div>
-            </div>
-        </div>
+        <span class="preloader-text" id="preloaderText" aria-label="STASIC"></span>
     </div>
 
     <!-- CRT Effects -->
@@ -125,7 +113,7 @@
         <header class="terminal-header">
             <div class="terminal-title">
                 <span class="terminal-prompt">></span>
-                <span class="terminal-text">STASIC_TERMINAL v2.5</span>
+                <span class="terminal-text">STASIC_TERMINAL v2.6</span>
             </div>
             <div class="terminal-status">
                 <span class="status-dot"></span>
@@ -668,6 +656,85 @@
             </div>
         </div>
     </div>
+
+    <!-- Event Popup -->
+    <div id="event-popup" style="
+        position: fixed;
+        bottom: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10001;
+        background: #050505;
+        border: 1px solid #0099aa;
+        padding: 1.5rem 2rem;
+        font-family: 'VT323', monospace;
+        max-width: 580px;
+        width: calc(100% - 2rem);
+        box-shadow: 0 0 30px rgba(0, 229, 255, 0.15), inset 0 0 20px rgba(0, 229, 255, 0.03);
+        transition: bottom 0.5s ease;
+    ">
+        <button id="event-popup-close" style="
+            position: absolute;
+            top: 0.5rem;
+            right: 0.75rem;
+            background: none;
+            border: none;
+            color: #0099aa;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.2rem 0.4rem;
+            line-height: 1;
+        " aria-label="Close popup">[X]</button>
+        <div style="color: #ff0040; font-size: 1rem; letter-spacing: 2px; margin-bottom: 0.5rem;">
+            > LIVE TONIGHT
+        </div>
+        <div style="color: #00e5ff; font-size: 1.8rem; text-shadow: 0 0 8px rgba(0,229,255,0.4); margin-bottom: 0.4rem;">
+            ATR x DEPOT BERLIN
+        </div>
+        <div style="color: #0099aa; font-size: 1.2rem; margin-bottom: 1rem;">
+            ://about blank &mdash; Lobby Floor &mdash; 04.04.2026
+        </div>
+        <a href="https://de.ra.co/events/2362691" target="_blank" rel="noopener" style="
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid #00e5ff;
+            color: #00e5ff;
+            text-decoration: none;
+            font-family: 'VT323', monospace;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        " onmouseover="this.style.background='#00e5ff';this.style.color='#0a0a0a';this.style.boxShadow='0 0 15px rgba(0,229,255,0.4)'"
+           onmouseout="this.style.background='none';this.style.color='#00e5ff';this.style.boxShadow='none'"
+        >[GET TICKETS]</a>
+    </div>
+    <script>
+    (function() {
+        var popup = document.getElementById('event-popup');
+        var closeBtn = document.getElementById('event-popup-close');
+
+        // Only show if event date hasn't passed (2026-04-05T06:00 = morning after event)
+        var eventEnd = new Date('2026-04-05T06:00:00+02:00');
+        if (new Date() > eventEnd) { popup.remove(); return; }
+
+        // Don't show if user actively closed it (expires after 6 hours)
+        var dismissed = localStorage.getItem('eventPopupClosed');
+        if (dismissed && (Date.now() - parseInt(dismissed)) < 6 * 60 * 60 * 1000) {
+            popup.remove(); return;
+        }
+
+        // Slide in after preloader finishes
+        window.addEventListener('preloader-done', function() {
+            setTimeout(function() { popup.style.bottom = '1.5rem'; }, 300);
+        });
+
+        closeBtn.addEventListener('click', function() {
+            popup.style.bottom = '-200px';
+            localStorage.setItem('eventPopupClosed', String(Date.now()));
+            setTimeout(function() { popup.remove(); }, 500);
+        });
+    })();
+    </script>
 
     <script src="scripts/retro-globe.js?v=5"></script>
 </body>

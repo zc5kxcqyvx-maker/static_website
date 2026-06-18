@@ -1325,6 +1325,41 @@ body {
     letter-spacing: 0.05em;
 }
 
+/* Past Events Archive */
+.archive-header {
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px dashed var(--cyan-dim);
+}
+
+.archive-status-text {
+    font-size: 0.7rem;
+    color: var(--cyan-dim);
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+}
+
+.shows-list.archive {
+    margin-bottom: 2rem;
+}
+
+.show-item.past {
+    border-style: dashed;
+    border-color: var(--cyan-dim);
+    background: transparent;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.show-item.past:hover {
+    opacity: 0.85;
+    background: rgba(0, 229, 255, 0.03);
+}
+
+.show-item.past .show-day {
+    text-shadow: none;
+}
+
 .booking-cta {
     display: flex;
     flex-direction: column;

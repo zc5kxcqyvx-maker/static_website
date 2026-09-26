@@ -800,16 +800,16 @@
             padding: 0.2rem 0.4rem;
             line-height: 1;
         " aria-label="Close popup">[X]</button>
-        <div style="color: #ff0040; font-size: 1rem; letter-spacing: 2px; margin-bottom: 0.5rem;">
-            > LIVE TONIGHT
+        <div style="color: #ff0040; font-size: 1rem; letter-spacing: 2px; margin-bottom: 0.5rem;" id="event-popup-label">
+            > NEXT TRANSMISSION
         </div>
         <div style="color: #00e5ff; font-size: 1.8rem; text-shadow: 0 0 8px rgba(0,229,255,0.4); margin-bottom: 0.4rem;">
             ATR x DEPOT BERLIN
         </div>
         <div style="color: #0099aa; font-size: 1.2rem; margin-bottom: 1rem;">
-            ://about blank &mdash; Lobby Floor &mdash; 04.04.2026
+            ://about blank &mdash; Lobby Floor &mdash; 16.10.2026
         </div>
-        <a href="https://de.ra.co/events/2362691" target="_blank" rel="noopener" style="
+        <a href="https://de.ra.co/events/2526326" target="_blank" rel="noopener" style="
             display: inline-block;
             padding: 0.5rem 1.5rem;
             border: 1px solid #00e5ff;
@@ -827,9 +827,14 @@
         var popup = document.getElementById('event-popup');
         var closeBtn = document.getElementById('event-popup-close');
 
-        // Only show if event date hasn't passed (2026-04-05T06:00 = morning after event)
-        var eventEnd = new Date('2026-04-05T06:00:00+02:00');
-        if (new Date() > eventEnd) { popup.remove(); return; }
+        // Only show if event hasn't ended (2026-10-17T08:00 = end of event)
+        var eventStart = new Date('2026-10-16T00:00:00+02:00');
+        var eventEnd = new Date('2026-10-17T08:00:00+02:00');
+        var now = new Date();
+        if (now > eventEnd) { popup.remove(); return; }
+        if (now >= eventStart) {
+            document.getElementById('event-popup-label').textContent = '> LIVE TONIGHT';
+        }
 
         // Don't show if user actively closed it (expires after 6 hours)
         var dismissed = localStorage.getItem('eventPopupClosed');
